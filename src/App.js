@@ -10,10 +10,20 @@ const VOID_MAP = new ArrayKeyedMap([
     [[1, 1, 4], "Red 2"],
     [[1, 2], "Red 1"],
 ]);
+const SOLAR_MAP = new ArrayKeyedMap([
+    [[1, 2], "Green 4"],
+    [[1, 3], "Cyan 4"],
+    [[1, 7, 2], "White 6"],
+]);
+const ARC_MAP = new ArrayKeyedMap([
+    [[1, 4], "Red 6"],
+    [[1, 6], "Yellow 7"],
+    [[2, 4], "Green 3"],
+]);
 const NODE_MAP = new Map([
     ["Void", VOID_MAP],
-    ["Solar", new Map()],
-    ["Arc", new Map()]
+    ["Solar", SOLAR_MAP],
+    ["Arc", ARC_MAP]
 ]);
 
 const FILTER_MAP = {
@@ -25,15 +35,25 @@ const ELEMENTS = Object.keys(FILTER_MAP);
 
 function App() {
     const [element, setElement] = useState("Void");
-    const [input, setInput] = useState([]);
     const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
+    
     const [solution, setSolution] = useState("");
-    const [numberOfSolutions, setNumberOfSolutions] = useState(solutionMap.size);
     const [solved, setSolved] = useState(0);
+    const [numberOfSolutions, setNumberOfSolutions] = useState(solutionMap.size);
+
+    const [input, setInput] = useState([]);
     const [disabled, setDisabled] = useState([]);
 
     function toggleRoute(element) {
         setElement(element);
+        const newSolutionMap = NODE_MAP.get(element);
+        setSolutionMap(newSolutionMap);
+
+        setSolution("");
+        setSolved(0);
+        setNumberOfSolutions(newSolutionMap.size);
+        
+        setInput([]);
     }
 
     function setTerminalInput(terminalInput) {
@@ -75,8 +95,10 @@ function App() {
             }
         }
         setDisabled(newDisabled);
+    }, [input]);
 
-        if (newDisabled.length === 12 && solved < numberOfSolutions) {
+    useEffect(() => {
+        if (disabled.length === 12 && solved < numberOfSolutions) {
             const solution = solutionMap.get(input)
             setSolution(solution);
             
@@ -87,7 +109,7 @@ function App() {
             setSolved(solved + 1);
             setInput([]);
         }
-    }, [input]);
+    }, [disabled]);
 
     const filterList = ELEMENTS.map((element) => {
         return (
