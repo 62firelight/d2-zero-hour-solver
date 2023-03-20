@@ -123,6 +123,8 @@ function App() {
         );
     });
 
+    const terminalNumber = input.length < 2 ? 1 : 2;
+
     return (
         <div className="app">
             <div className="filter-buttons">{filterList}</div>
@@ -133,7 +135,7 @@ function App() {
             <button type="button" onClick={() => toggleElement(element)}>
                 Reset
             </button>
-            <h3>Terminal 1</h3>
+            <h3>Terminal {terminalNumber}</h3>
             <TerminalButtons
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
