@@ -2,7 +2,7 @@ import React from "react";
 
 function FilterButton(props) {
     return (
-        <button onClick={() => props.toggleRoute(props.element)}>
+        <button onClick={() => props.toggleElement(props.element)}>
             {props.element}
         </button>
     );

@@ -23,7 +23,7 @@ const ARC_MAP = new ArrayKeyedMap([
 const NODE_MAP = new Map([
     ["Void", VOID_MAP],
     ["Solar", SOLAR_MAP],
-    ["Arc", ARC_MAP]
+    ["Arc", ARC_MAP],
 ]);
 
 const FILTER_MAP = {
@@ -36,15 +36,17 @@ const ELEMENTS = Object.keys(FILTER_MAP);
 function App() {
     const [element, setElement] = useState("Void");
     const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
-    
+
     const [solution, setSolution] = useState("");
     const [solved, setSolved] = useState(0);
-    const [numberOfSolutions, setNumberOfSolutions] = useState(solutionMap.size);
+    const [numberOfSolutions, setNumberOfSolutions] = useState(
+        solutionMap.size
+    );
 
     const [input, setInput] = useState([]);
     const [disabled, setDisabled] = useState([]);
 
-    function toggleRoute(element) {
+    function toggleElement(element) {
         setElement(element);
         const newSolutionMap = NODE_MAP.get(element);
         setSolutionMap(newSolutionMap);
@@ -52,7 +54,7 @@ function App() {
         setSolution("");
         setSolved(0);
         setNumberOfSolutions(newSolutionMap.size);
-        
+
         setInput([]);
     }
 
@@ -70,13 +72,13 @@ function App() {
 
             // Add on a new number to check potential outcomes
             newInput.push(i);
-            
+
             // Check which inputs should not be disabled
             const shouldNotBeDisabled = nodeKeys.some((key) => {
                 // Make a copy of the first X elements of the key
                 // where X is the length of newInput
-                const keyCopy = key.slice(0, newInput.length); 
-                
+                const keyCopy = key.slice(0, newInput.length);
+
                 // Check if the key starts with exactly the same elements
                 // as newInput
                 const startsWith = keyCopy.every((element, index) => {
@@ -99,9 +101,9 @@ function App() {
 
     useEffect(() => {
         if (disabled.length === 12 && solved < numberOfSolutions) {
-            const solution = solutionMap.get(input)
+            const solution = solutionMap.get(input);
             setSolution(solution);
-            
+
             const solutionMapCopy = new ArrayKeyedMap(solutionMap);
             solutionMapCopy.delete(input);
             setSolutionMap(solutionMapCopy);
@@ -116,7 +118,7 @@ function App() {
             <FilterButton
                 key={element}
                 element={element}
-                toggleRoute={toggleRoute}
+                toggleElement={toggleElement}
             />
         );
     });
@@ -125,7 +127,12 @@ function App() {
         <div className="app">
             <div className="filter-buttons">{filterList}</div>
             <h2>{element}</h2>
-            <strong>Progress: {solved} / {numberOfSolutions}</strong>
+            <strong>
+                Progress: {solved} / {numberOfSolutions}
+            </strong>
+            <button type="button" onClick={() => toggleElement(element)}>
+                Reset
+            </button>
             <h3>Terminal 1</h3>
             <TerminalButtons
                 disabled={disabled}
@@ -133,7 +140,9 @@ function App() {
             />
             {solution}
             <img src={FILTER_MAP[element]} />
-            <a href="https://www.shacknews.com/article/111630/zero-hour-mission-guide-destiny-2">Source</a>
+            <a href="https://www.shacknews.com/article/111630/zero-hour-mission-guide-destiny-2">
+                Source
+            </a>
         </div>
     );
 }
