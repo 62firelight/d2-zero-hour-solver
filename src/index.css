@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
-.filter-buttons {
+.app {
   display: flex;
+  flex-flow: column nowrap;
+}
+
+img {
+  width: 25%;
 }
