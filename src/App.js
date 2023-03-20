@@ -133,6 +133,7 @@ function App() {
             />
             {solution}
             <img src={FILTER_MAP[element]} />
+            <a href="https://www.shacknews.com/article/111630/zero-hour-mission-guide-destiny-2">Source</a>
         </div>
     );
 }
