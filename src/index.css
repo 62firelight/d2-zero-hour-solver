@@ -40,6 +40,19 @@ code {
   max-width: 100%;
 }
 
+.terminal-inputs {
+  font-size: 1.17em;
+}
+
+.terminal-individual-input, .highlight, .no-highlight {
+  display: inline;
+}
+
+.highlight {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .terminal-heading {
   margin: 0;
 }

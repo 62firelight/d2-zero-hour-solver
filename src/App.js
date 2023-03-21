@@ -42,18 +42,22 @@ function App() {
 
     function getHoverString(index, end) {
         let assignedHoverInput =
-            hoverInput !== -1 && !disabled.includes(hoverInput)
-                ? "" + hoverInput
+            input.length === index &&
+            hoverInput !== -1 &&
+            !disabled.includes(hoverInput)
+                ? hoverInput.toString()
                 : "?";
 
-        if (input.length !== index) {
-            assignedHoverInput = " ";
-        }
+        let hoverString = input[index] ? input[index].toString() : assignedHoverInput;
 
-        let hoverString = input[index] ? "" + input[index] : assignedHoverInput;
-        if (hoverString.length > 0 && hoverString !== " " && end) {
-            hoverString = "-" + hoverString;
-        }
+        hoverString = (
+            <div class="terminal-individual-input">
+                {hoverString.length > 0 && end ? "-" : ""}
+                <div className={input.length === index ? "highlight" : "no-highlight"}>
+                    {hoverString}
+                </div>
+            </div>
+        );
 
         return hoverString;
     }
@@ -118,7 +122,6 @@ function App() {
         );
     });
 
-    const terminalNumber = input.length < 2 ? 1 : 2;
     const terminal1 = (
         <div className="terminal-input">
             <strong>Terminal 1:</strong> {getHoverString(0, false)}
@@ -146,6 +149,15 @@ function App() {
             </strong>
         );
 
+    let terminalNumber = 1;
+    if (input.length >= 2) {
+        terminalNumber = 2;
+    }
+    if (input.length >= 4) {
+        terminalNumber = 3;
+    }
+    const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
+
     return (
         <div className="app">
             <div className="filter-buttons">{filterList}</div>
@@ -158,10 +170,12 @@ function App() {
             <button type="button" onClick={() => toggleElement(element)}>
                 Reset
             </button>
-            {terminal1}
-            {terminal2}
+            <div className="terminal-inputs">
+                {terminal1}
+                {terminal2}
+            </div>
             <h3 className="terminal-heading">
-                Input Terminal {terminalNumber}
+                Input Terminal {terminalNumber} ({inputSide})
             </h3>
             <TerminalButtons
                 disabled={disabled}
