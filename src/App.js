@@ -48,12 +48,18 @@ function App() {
                 ? hoverInput.toString()
                 : "?";
 
-        let hoverString = input[index] ? input[index].toString() : assignedHoverInput;
+        let hoverString = input[index]
+            ? input[index].toString()
+            : assignedHoverInput;
 
         hoverString = (
             <div class="terminal-individual-input">
                 {hoverString.length > 0 && end ? "-" : ""}
-                <div className={input.length === index ? "highlight" : "no-highlight"}>
+                <div
+                    className={
+                        input.length === index ? "highlight" : "no-highlight"
+                    }
+                >
                     {hoverString}
                 </div>
             </div>
@@ -166,13 +172,15 @@ function App() {
                 <img className="room-map" src="./map.png" alt="room map" />
                 <div className="solution">{solution}</div>
             </div>
-            {progress}
-            <button type="button" onClick={() => toggleElement(element)}>
-                Reset
-            </button>
-            <div className="terminal-inputs">
-                {terminal1}
-                {terminal2}
+            <div class="terminal-info">
+                {progress}
+                <button type="button" onClick={() => toggleElement(element)}>
+                    Reset
+                </button>
+                <div className="terminal-inputs">
+                    {terminal1}
+                    {terminal2}
+                </div>
             </div>
             <h3 className="terminal-heading">
                 Input Terminal {terminalNumber} ({inputSide})
