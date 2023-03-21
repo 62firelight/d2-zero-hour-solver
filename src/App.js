@@ -66,17 +66,16 @@ function App() {
 
     function getHoverString(index, end) {
         let assignedHoverInput =
-            hoverInput !== -1 &&
-            !disabled.includes(hoverInput)
+            hoverInput !== -1 && !disabled.includes(hoverInput)
                 ? "" + hoverInput
                 : "?";
 
         if (input.length !== index) {
-            assignedHoverInput = "";
+            assignedHoverInput = " ";
         }
 
         let hoverString = input[index] ? "" + input[index] : assignedHoverInput;
-        if (hoverString.length > 0 && end) {
+        if (hoverString.length > 0 && hoverString !== " " && end) {
             hoverString = "-" + hoverString;
         }
 
@@ -160,6 +159,17 @@ function App() {
             <br />
         );
 
+    const progress =
+        solved >= numberOfSolutions ? (
+            <strong>
+                Finished: {solved} / {numberOfSolutions})
+            </strong>
+        ) : (
+            <strong>
+                Progress: {solved} / {numberOfSolutions}
+            </strong>
+        );
+
     return (
         <div className="app">
             <div className="filter-buttons">{filterList}</div>
@@ -168,9 +178,7 @@ function App() {
                 <img className="room-map" src="./map.png" alt="room map" />
                 <div className="solution">{solution}</div>
             </div>
-            <strong>
-                Progress: {solved} / {numberOfSolutions}
-            </strong>
+            {progress}
             <button type="button" onClick={() => toggleElement(element)}>
                 Reset
             </button>
