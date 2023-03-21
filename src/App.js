@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import FilterButton from "./components/FilterButton";
 import { useEffect, useState } from "react";
