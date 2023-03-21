@@ -37,7 +37,6 @@ function App() {
 
     function setTerminalInput(terminalInput) {
         setInput([...input, terminalInput]);
-        setSolution("");
     }
 
     function getHoverString(index, end) {
