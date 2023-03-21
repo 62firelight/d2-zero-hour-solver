@@ -18,19 +18,38 @@ code {
   align-items: center;
 }
 
+.room-map-container {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.room-map {
+  width: 300px;
+}
+
+.solution {
+  position: absolute;
+  top: 230px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 .route-map {
   max-width: 100%;
 }
 
 .terminal-heading {
-  margin: 0 0 13em 0;
+  margin: 0;
 }
 
 /* Code for positioning buttons comes from Pastuleo23 (AKA Cheese Forever on YouTube) */
 /* Cheese Forever's channel: https://www.youtube.com/channel/UCl1M49CAo9u99gABBIqEgDQ */
 .terminal-buttons {
-  position: absolute;
-  top: 200px;
+  position: relative;
+  /* top: 573px; */
+  top: 61%;
   height: 250px;
   width: 250px;
 }

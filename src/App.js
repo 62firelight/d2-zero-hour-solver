@@ -64,10 +64,21 @@ function App() {
         setSolution("");
     }
 
-    function getHoverString(index) {
-        const assignedHoverInput = input.length === index && hoverInput !== -1 && !disabled.includes(hoverInput) ? hoverInput : "?"; 
+    function getHoverString(index, end) {
+        let assignedHoverInput =
+            hoverInput !== -1 &&
+            !disabled.includes(hoverInput)
+                ? "" + hoverInput
+                : "?";
 
-        let hoverString = input[index] ? input[index] : assignedHoverInput;
+        if (input.length !== index) {
+            assignedHoverInput = "";
+        }
+
+        let hoverString = input[index] ? "" + input[index] : assignedHoverInput;
+        if (hoverString.length > 0 && end) {
+            hoverString = "-" + hoverString;
+        }
 
         return hoverString;
     }
@@ -133,27 +144,51 @@ function App() {
     });
 
     const terminalNumber = input.length < 2 ? 1 : 2;
+    const terminal1 = (
+        <div className="terminal-input">
+            <strong>Terminal 1:</strong> {getHoverString(0, false)}
+            {getHoverString(1, true)}
+        </div>
+    );
+    const terminal2 =
+        input.length >= 2 ? (
+            <div className="terminal-input">
+                <strong>Terminal 2:</strong> {getHoverString(2, false)}
+                {getHoverString(3, true)}
+            </div>
+        ) : (
+            <br />
+        );
 
     return (
         <div className="app">
             <div className="filter-buttons">{filterList}</div>
             <h2>{element}</h2>
+            <div className="room-map-container">
+                <img className="room-map" src="./map.png" alt="room map" />
+                <div className="solution">{solution}</div>
+            </div>
             <strong>
                 Progress: {solved} / {numberOfSolutions}
             </strong>
             <button type="button" onClick={() => toggleElement(element)}>
                 Reset
             </button>
-            <div className="terminal-input"><strong>Terminal 1:</strong> {getHoverString(0)}-{getHoverString(1)}</div>
-            <div className="terminal-input"><strong>Terminal 2:</strong> {getHoverString(2)}-{getHoverString(3)}</div>
-            <h3 className="terminal-heading">Input Terminal {terminalNumber}</h3>
+            {terminal1}
+            {terminal2}
+            <h3 className="terminal-heading">
+                Input Terminal {terminalNumber}
+            </h3>
             <TerminalButtons
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
                 setHoverInput={setHoverInput}
             />
-            {solution}
-            <img className="route-map" src={FILTER_MAP[element]} />
+            <img
+                className="route-map"
+                src={FILTER_MAP[element]}
+                alt="route map"
+            />
             <a href="https://www.shacknews.com/article/111630/zero-hour-mission-guide-destiny-2">
                 Source
             </a>
