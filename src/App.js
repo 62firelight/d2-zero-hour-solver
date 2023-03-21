@@ -162,7 +162,7 @@ function App() {
     const progress =
         solved >= numberOfSolutions ? (
             <strong>
-                Finished: {solved} / {numberOfSolutions})
+                Finished: {solved} / {numberOfSolutions}
             </strong>
         ) : (
             <strong>
