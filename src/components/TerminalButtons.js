@@ -26,7 +26,7 @@ function TerminalButtons(props) {
     return (
         <div className="terminal-buttons">
             {buttonList}
-            <img className="wheel" src="./wheel.png" />
+            <img className="wheel" src="./wheel.png" alt="button wheel" />
         </div>
     );
 }
