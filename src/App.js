@@ -135,13 +135,13 @@ function App() {
             <button type="button" onClick={() => toggleElement(element)}>
                 Reset
             </button>
-            <h3>Terminal {terminalNumber}</h3>
+            <h3 className="terminal-heading">Terminal {terminalNumber}</h3>
             <TerminalButtons
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
             />
             {solution}
-            <img src={FILTER_MAP[element]} />
+            <img className="route-map" src={FILTER_MAP[element]} />
             <a href="https://www.shacknews.com/article/111630/zero-hour-mission-guide-destiny-2">
                 Source
             </a>

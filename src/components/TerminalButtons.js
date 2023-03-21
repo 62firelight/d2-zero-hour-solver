@@ -2,24 +2,31 @@ import React from "react";
 
 let numberList = [];
 for (let i = 1; i < 13; i++) {
-    numberList.push(i);
+    const newNumber = { className: `button-${i}`, number: i };
+    numberList.push(newNumber);
 }
 
 function TerminalButtons(props) {
     const buttonList = numberList.map((number) => {
         return (
             <button
-                key={number}
+                className={number.className}
+                key={number.number}
                 disabled={props.disabled.some(
-                    (disabledNumber) => disabledNumber === number
+                    (disabledNumber) => disabledNumber === number.number
                 )}
-                onClick={() => props.setTerminalInput(number)}
+                onClick={() => props.setTerminalInput(number.number)}
             >
-                {number}
+                {number.number}
             </button>
         );
     });
-    return <div className="terminal-buttons">{buttonList}</div>;
+    return (
+        <div className="terminal-buttons">
+            {buttonList}
+            <img className="wheel" src="./wheel.png" />
+        </div>
+    );
 }
 
 export default TerminalButtons;

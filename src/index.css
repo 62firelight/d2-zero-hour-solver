@@ -18,6 +18,158 @@ code {
   align-items: center;
 }
 
-img {
-  width: 25%;
+.route-map {
+  max-width: 100%;
+}
+
+.terminal-heading {
+  margin: 0 0 13em 0;
+}
+
+/* Code for positioning buttons comes from Pastuleo23 (AKA Cheese Forever on YouTube) */
+/* Cheese Forever's channel: https://www.youtube.com/channel/UCl1M49CAo9u99gABBIqEgDQ */
+.terminal-buttons {
+  position: absolute;
+  top: 155px;
+  height: 250px;
+  width: 250px;
+}
+
+.terminal-buttons button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.terminal-buttons button:hover:enabled {
+  color: #938200;
+}
+
+.wheel {
+  width: 240px;
+  height: 240px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.button-1 {
+  position: absolute;
+  top: 0px;
+  left: 128px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-2 {
+  position: absolute;
+  top: 27px;
+  left: 176px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-3 {
+  position: absolute;
+  top: 73px;
+  left: 204px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-4 {
+  position: absolute;
+  top: 125px;
+  left: 204px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-5 {
+  position: absolute;
+  top: 173px;
+  left: 180px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-6 {
+  position: absolute;
+  top: 199px;
+  left: 136px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-7 {
+  position: absolute;
+  top: 202px;
+  left: 84px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-8 {
+  position: absolute;
+  top: 178px;
+  left: 34px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-9 {
+  position: absolute;
+  top: 132px;
+  left: 4px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-10 {
+  position: absolute;
+  top: 78px;
+  left: 1px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-11 {
+  position: absolute;
+  top: 29px;
+  left: 27px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.button-12 {
+  position: absolute;
+  top: 1px;
+  left: 74px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
 }
