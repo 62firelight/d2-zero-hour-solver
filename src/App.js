@@ -44,6 +44,7 @@ function App() {
     );
 
     const [input, setInput] = useState([]);
+    const [hoverInput, setHoverInput] = useState(-1);
     const [disabled, setDisabled] = useState([]);
 
     function toggleElement(element) {
@@ -61,6 +62,14 @@ function App() {
     function setTerminalInput(terminalInput) {
         setInput([...input, terminalInput]);
         setSolution("");
+    }
+
+    function getHoverString(index) {
+        const assignedHoverInput = input.length === index && hoverInput !== -1 && !disabled.includes(hoverInput) ? hoverInput : "?"; 
+
+        let hoverString = input[index] ? input[index] : assignedHoverInput;
+
+        return hoverString;
     }
 
     useEffect(() => {
@@ -135,10 +144,13 @@ function App() {
             <button type="button" onClick={() => toggleElement(element)}>
                 Reset
             </button>
-            <h3 className="terminal-heading">Terminal {terminalNumber}</h3>
+            <div className="terminal-input"><strong>Terminal 1:</strong> {getHoverString(0)}-{getHoverString(1)}</div>
+            <div className="terminal-input"><strong>Terminal 2:</strong> {getHoverString(2)}-{getHoverString(3)}</div>
+            <h3 className="terminal-heading">Input Terminal {terminalNumber}</h3>
             <TerminalButtons
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
+                setHoverInput={setHoverInput}
             />
             {solution}
             <img className="route-map" src={FILTER_MAP[element]} />

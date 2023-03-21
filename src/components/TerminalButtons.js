@@ -16,6 +16,8 @@ function TerminalButtons(props) {
                     (disabledNumber) => disabledNumber === number.number
                 )}
                 onClick={() => props.setTerminalInput(number.number)}
+                onMouseOver={() => props.setHoverInput(number.number)}
+                onMouseOut={() => props.setHoverInput(-1)}
             >
                 {number.number}
             </button>
