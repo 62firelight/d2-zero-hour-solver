@@ -1,6 +1,6 @@
 import "./App.css";
 import FilterButton from "./components/FilterButton";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import TerminalButtons from "./components/TerminalButtons";
 import ArrayKeyedMap from "array-keyed-map";
 import NODE_MAP from "./components/NODE_MAP";
@@ -56,7 +56,7 @@ function App() {
 
     // Show solution
     if (disabled.length === 12 && solved < numberOfSolutions) {
-        const newSolution = solutionMap.get(input);
+        const newSolution = [input, solutionMap.get(input)];
         setSolutions([...solutions, newSolution]);
 
         const solutionMapCopy = new ArrayKeyedMap(solutionMap);
@@ -119,6 +119,19 @@ function App() {
         return hoverString;
     }
 
+    function undo() {
+        const mostRecentSolution = solutions.pop();
+
+        if (mostRecentSolution) {
+            const solutionMapCopy = new ArrayKeyedMap(solutionMap);
+            solutionMapCopy.set(mostRecentSolution[0], mostRecentSolution[1]);
+            setSolutionMap(solutionMapCopy);
+
+            setInput([]);
+            setHoverInput(-1);
+        }
+    }
+
     const terminal1 = (
         <div className="terminal-input">
             <strong>Terminal 1:</strong> {getHoverString(0, false)}
@@ -144,19 +157,19 @@ function App() {
             </strong>
         );
 
-    let terminalNumber = 1;
-    if (input.length >= 2) {
-        terminalNumber = 2;
-    }
-    if (input.length >= 4) {
-        terminalNumber = 3;
-    }
-    const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
+    // let terminalNumber = 1;
+    // if (input.length >= 2) {
+    //     terminalNumber = 2;
+    // }
+    // if (input.length >= 4) {
+    //     terminalNumber = 3;
+    // }
+    // const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
 
     const solutionList = solutions
-        .map((solution) => <li key={solution}>{solution}</li>)
+        .map((solution) => <li key={solution[1]}>{solution[1]}</li>)
         .reverse();
-    const mostRecentSolution = solutions[solutions.length - 1];
+    const mostRecentSolution = solutions.length > 0 ? solutions[solutions.length - 1][1] : "";
 
     return (
         <div className="app">
@@ -185,6 +198,7 @@ function App() {
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
                 setHoverInput={setHoverInput}
+                undo={undo}
             />
             <h3 className="history-heading">History</h3>
             <ul>{solutionList.length > 0 ? solutionList : "<empty>"}</ul>

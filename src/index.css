@@ -80,7 +80,7 @@ ul {
   width: 250px;
 }
 
-.terminal-buttons button {
+.terminal-buttons button:not(.undo) {
   cursor: pointer;
   background-color: transparent;
   border: 0;
@@ -88,8 +88,14 @@ ul {
   font-weight: bold;
 }
 
-.terminal-buttons button:hover:enabled {
+.terminal-buttons button:not(.undo):hover:enabled {
   color: #938200;
+}
+
+.undo {
+  position: absolute;
+  top: 47%;
+  right: 40%;
 }
 
 .wheel {

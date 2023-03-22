@@ -27,6 +27,7 @@ function TerminalButtons(props) {
         <div className="terminal-buttons">
             {buttonList}
             <img className="wheel" src="./wheel.png" alt="button wheel" />
+            <button className="undo" onClick={() => props.undo()}>Undo</button>
         </div>
     );
 }
