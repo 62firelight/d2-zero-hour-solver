@@ -75,17 +75,19 @@ function App() {
         setSolutions([]);
 
         setInput([]);
+        setHoverInput(-1);
     }
 
     function setTerminalInput(terminalInput) {
         setInput([...input, terminalInput]);
     }
 
-    const filterList = ELEMENTS.map((element) => {
+    const filterList = ELEMENTS.map((name) => {
         return (
             <FilterButton
-                key={element}
-                element={element}
+                key={name}
+                element={name}
+                isPressed={name === element}
                 toggleElement={toggleElement}
             />
         );
@@ -173,14 +175,18 @@ function App() {
 
     return (
         <div className="app">
+            <h1>Destiny 2 Zero Hour Solver</h1>
+
+            <h2>Configuration</h2>
             <div className="filter-buttons">{filterList}</div>
-            <h2>{element}</h2>
+
             <div className="room-map-container">
                 <img className="room-map" src="./map.png" alt="room map" />
                 <div className="solution">
                     {mostRecentSolution}
                 </div>
             </div>
+
             <div className="terminal-info">
                 {progress}
                 <button type="button" onClick={() => toggleElement(element)}>
@@ -191,17 +197,23 @@ function App() {
                     {terminal2}
                 </div>
             </div>
-            {/* <h3 className="terminal-heading">
+            {/* <h2>
                 Input Terminal {terminalNumber} ({inputSide})
-            </h3> */}
+            </h2> */}
+
             <TerminalButtons
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
                 setHoverInput={setHoverInput}
                 undo={undo}
             />
-            <h3 className="history-heading">History</h3>
+
+            <h2>History</h2>
             <ul>{solutionList.length > 0 ? solutionList : "<empty>"}</ul>
+
+            <hr />
+
+            <h2>Vault Route</h2>
             <img
                 className="route-map"
                 src={FILTER_MAP[element]}

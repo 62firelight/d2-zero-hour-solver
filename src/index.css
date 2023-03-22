@@ -18,6 +18,10 @@ code {
   align-items: center;
 }
 
+.filter-buttons {
+  margin: 0 0 1em 0;
+}
+
 .room-map-container {
   position: relative;
   display: flex;
@@ -56,18 +60,18 @@ code {
   text-decoration: underline;
 }
 
-.terminal-heading {
-  margin: 0;
-}
-
-.history-heading {
+h1, h2, h3 {
   margin: 0;
 }
 
 ul {
   list-style: none;
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
   padding: 0;
+}
+
+a {
+  margin: 0 0 2em 0;
 }
 
 /* Code for positioning buttons comes from Pastuleo23 (AKA Cheese Forever on YouTube) */
@@ -96,6 +100,16 @@ ul {
   position: absolute;
   top: 47%;
   right: 40%;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 25%;
+  background-color: black;
+  height: 1px;
+  opacity: 0.5;
 }
 
 .wheel {
