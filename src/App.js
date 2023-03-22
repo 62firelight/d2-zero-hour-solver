@@ -1,6 +1,6 @@
 import "./App.css";
 import FilterButton from "./components/FilterButton";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TerminalButtons from "./components/TerminalButtons";
 import ArrayKeyedMap from "array-keyed-map";
 import NODE_MAP from "./components/NODE_MAP";
@@ -11,62 +11,14 @@ const ELEMENTS = Object.keys(FILTER_MAP);
 function App() {
     const [element, setElement] = useState("Void");
     const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
-
     const [solution, setSolution] = useState("");
-    const [solved, setSolved] = useState(0);
-    const [numberOfSolutions, setNumberOfSolutions] = useState(
-        solutionMap.size
-    );
-
     const [input, setInput] = useState([]);
     const [hoverInput, setHoverInput] = useState(-1);
-    const [disabled, setDisabled] = useState([]);
 
-    function toggleElement(element) {
-        setElement(element);
-        const newSolutionMap = NODE_MAP.get(element);
-        setSolutionMap(newSolutionMap);
-
-        setSolution("");
-        setSolved(0);
-        setNumberOfSolutions(newSolutionMap.size);
-
-        setInput([]);
-    }
-
-    function setTerminalInput(terminalInput) {
-        setInput([...input, terminalInput]);
-    }
-
-    function getHoverString(index, end) {
-        let assignedHoverInput =
-            input.length === index &&
-            hoverInput !== -1 &&
-            !disabled.includes(hoverInput)
-                ? hoverInput.toString()
-                : "?";
-
-        let hoverString = input[index]
-            ? input[index].toString()
-            : assignedHoverInput;
-
-        hoverString = (
-            <div class="terminal-individual-input">
-                {hoverString.length > 0 && end ? "-" : ""}
-                <div
-                    className={
-                        input.length === index ? "highlight" : "no-highlight"
-                    }
-                >
-                    {hoverString}
-                </div>
-            </div>
-        );
-
-        return hoverString;
-    }
-
-    useEffect(() => {
+    const solved = NODE_MAP.get(element).size - solutionMap.size;
+    const numberOfSolutions = NODE_MAP.get(element).size;
+    
+    const disabled = useMemo(() => {
         const nodeKeys = [...solutionMap.keys()];
         let newDisabled = [];
         for (let i = 1; i < 13; i++) {
@@ -99,22 +51,34 @@ function App() {
                 newDisabled.push(i);
             }
         }
-        setDisabled(newDisabled);
-    }, [input]);
+        return newDisabled;
+    }, [input, solutionMap]);
 
-    useEffect(() => {
-        if (disabled.length === 12 && solved < numberOfSolutions) {
-            const solution = solutionMap.get(input);
-            setSolution(solution);
+    // Show solution
+    if (disabled.length === 12 && solved < numberOfSolutions) {
+        const solution = solutionMap.get(input);
+        setSolution(solution);
 
-            const solutionMapCopy = new ArrayKeyedMap(solutionMap);
-            solutionMapCopy.delete(input);
-            setSolutionMap(solutionMapCopy);
+        const solutionMapCopy = new ArrayKeyedMap(solutionMap);
+        solutionMapCopy.delete(input);
+        setSolutionMap(solutionMapCopy);
 
-            setSolved(solved + 1);
-            setInput([]);
-        }
-    }, [disabled]);
+        setInput([]);
+    }
+
+    function toggleElement(element) {
+        setElement(element);
+        const newSolutionMap = NODE_MAP.get(element);
+        setSolutionMap(newSolutionMap);
+
+        setSolution("");
+
+        setInput([]);
+    }
+
+    function setTerminalInput(terminalInput) {
+        setInput([...input, terminalInput]);
+    }
 
     const filterList = ELEMENTS.map((element) => {
         return (
@@ -125,6 +89,34 @@ function App() {
             />
         );
     });
+
+    function getHoverString(index, end) {
+        let assignedHoverInput =
+            input.length === index &&
+            hoverInput !== -1 &&
+            !disabled.includes(hoverInput)
+                ? hoverInput.toString()
+                : "?";
+
+        let hoverString = input[index]
+            ? input[index].toString()
+            : assignedHoverInput;
+
+        hoverString = (
+            <div className="terminal-individual-input">
+                {hoverString.length > 0 && end ? "-" : ""}
+                <div
+                    className={
+                        input.length === index ? "highlight" : "no-highlight"
+                    }
+                >
+                    {hoverString}
+                </div>
+            </div>
+        );
+
+        return hoverString;
+    }
 
     const terminal1 = (
         <div className="terminal-input">
@@ -170,7 +162,7 @@ function App() {
                 <img className="room-map" src="./map.png" alt="room map" />
                 <div className="solution">{solution}</div>
             </div>
-            <div class="terminal-info">
+            <div className="terminal-info">
                 {progress}
                 <button type="button" onClick={() => toggleElement(element)}>
                     Reset
