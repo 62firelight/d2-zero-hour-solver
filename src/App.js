@@ -11,13 +11,13 @@ const ELEMENTS = Object.keys(FILTER_MAP);
 function App() {
     const [element, setElement] = useState("Void");
     const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
-    const [solution, setSolution] = useState("");
+    const [solutions, setSolutions] = useState([]);
     const [input, setInput] = useState([]);
     const [hoverInput, setHoverInput] = useState(-1);
 
     const solved = NODE_MAP.get(element).size - solutionMap.size;
     const numberOfSolutions = NODE_MAP.get(element).size;
-    
+
     const disabled = useMemo(() => {
         const nodeKeys = [...solutionMap.keys()];
         let newDisabled = [];
@@ -56,8 +56,8 @@ function App() {
 
     // Show solution
     if (disabled.length === 12 && solved < numberOfSolutions) {
-        const solution = solutionMap.get(input);
-        setSolution(solution);
+        const newSolution = solutionMap.get(input);
+        setSolutions([...solutions, newSolution]);
 
         const solutionMapCopy = new ArrayKeyedMap(solutionMap);
         solutionMapCopy.delete(input);
@@ -71,7 +71,7 @@ function App() {
         const newSolutionMap = NODE_MAP.get(element);
         setSolutionMap(newSolutionMap);
 
-        setSolution("");
+        setSolutions([]);
 
         setInput([]);
     }
@@ -154,13 +154,19 @@ function App() {
     }
     const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
 
+    const solutionList = solutions
+        .map((solution) => <li>{solution}</li>)
+        .reverse();
+
     return (
         <div className="app">
             <div className="filter-buttons">{filterList}</div>
             <h2>{element}</h2>
             <div className="room-map-container">
                 <img className="room-map" src="./map.png" alt="room map" />
-                <div className="solution">{solution}</div>
+                <div className="solution">
+                    {solutions[solutions.length - 1]}
+                </div>
             </div>
             <div className="terminal-info">
                 {progress}
@@ -180,6 +186,8 @@ function App() {
                 setTerminalInput={setTerminalInput}
                 setHoverInput={setHoverInput}
             />
+            <h3 className="history-heading">History</h3>
+            <ul>{solutionList.length > 0 ? solutionList : "<empty>"}</ul>
             <img
                 className="route-map"
                 src={FILTER_MAP[element]}
