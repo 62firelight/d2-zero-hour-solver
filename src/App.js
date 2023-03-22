@@ -64,6 +64,7 @@ function App() {
         setSolutionMap(solutionMapCopy);
 
         setInput([]);
+        setHoverInput(-1);
     }
 
     function toggleElement(element) {
@@ -104,7 +105,7 @@ function App() {
 
         hoverString = (
             <div className="terminal-individual-input">
-                {hoverString.length > 0 && end ? "-" : ""}
+                {hoverString.length > 0 && end ? ", " : ""}
                 <div
                     className={
                         input.length === index ? "highlight" : "no-highlight"
@@ -125,13 +126,11 @@ function App() {
         </div>
     );
     const terminal2 =
-        input.length >= 2 ? (
+        (
             <div className="terminal-input">
                 <strong>Terminal 2:</strong> {getHoverString(2, false)}
                 {getHoverString(3, true)}
             </div>
-        ) : (
-            <br />
         );
 
     const progress =
@@ -155,8 +154,9 @@ function App() {
     const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
 
     const solutionList = solutions
-        .map((solution) => <li>{solution}</li>)
+        .map((solution) => <li key={solution}>{solution}</li>)
         .reverse();
+    const mostRecentSolution = solutions[solutions.length - 1];
 
     return (
         <div className="app">
@@ -165,7 +165,7 @@ function App() {
             <div className="room-map-container">
                 <img className="room-map" src="./map.png" alt="room map" />
                 <div className="solution">
-                    {solutions[solutions.length - 1]}
+                    {mostRecentSolution}
                 </div>
             </div>
             <div className="terminal-info">
@@ -178,9 +178,9 @@ function App() {
                     {terminal2}
                 </div>
             </div>
-            <h3 className="terminal-heading">
+            {/* <h3 className="terminal-heading">
                 Input Terminal {terminalNumber} ({inputSide})
-            </h3>
+            </h3> */}
             <TerminalButtons
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
