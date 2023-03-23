@@ -248,36 +248,11 @@ function App() {
                 </table>
                 <div className="nodes">
                     {nodeList}
-                    {/* <div className="node-1">
-                        <span>1</span>
-                    </div>
-                    <div className="node-2">
-                        <span>2</span>
-                    </div>
-                    <div className="node-3">
-                        <span>3</span>
-                    </div>
-                    <div className="node-4">
-                        <span>4</span>
-                    </div>
-                    <div className="node-5">
-                        <span>5</span>
-                    </div>
-                    <div className="node-6">
-                        <span>6</span>
-                    </div>
-                    <div className="node-7">
-                        <span>7</span>
-                    </div> */}
                 </div>
                 <div className="solution">{mostRecentSolution}</div>
             </div>
 
             <div className="terminal-info">
-                {progress}
-                <button type="button" onClick={() => toggleElement(element)}>
-                    Reset
-                </button>
                 <div className="terminal-inputs">
                     {terminal1}
                     {terminal2}
@@ -291,6 +266,9 @@ function App() {
                 disabled={disabled}
                 setTerminalInput={setTerminalInput}
                 setHoverInput={setHoverInput}
+                progress={progress}
+                element={element}
+                toggleElement={toggleElement}
                 undo={undo}
             />
 

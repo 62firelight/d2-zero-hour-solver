@@ -16,8 +16,13 @@ function TerminalButtons(props) {
                     (disabledNumber) => disabledNumber === number.number
                 )}
                 onClick={() => props.setTerminalInput(number.number)}
-                onMouseOver={() => {props.setHoverInput(number.number)}}
-                onMouseOut={() => props.setHoverInput(-1)}
+                onMouseOver={() => {
+                    if (window.innerWidth >= 800)
+                        props.setHoverInput(number.number);
+                }}
+                onMouseOut={() => {
+                    if (window.innerWidth >= 800) props.setHoverInput(-1);
+                }}
             >
                 {number.number}
             </button>
@@ -27,7 +32,16 @@ function TerminalButtons(props) {
         <div className="terminal-buttons">
             {buttonList}
             <img className="wheel" src="./wheel.png" alt="button wheel" />
-            <button className="undo" onClick={() => props.undo()}>Undo</button>
+            <div className="progress">
+                {props.progress}
+                <button
+                    type="button"
+                    onClick={() => props.toggleElement(props.element)}
+                >
+                    Reset
+                </button>
+                <button onClick={() => props.undo()}>Undo</button>
+            </div>
         </div>
     );
 }

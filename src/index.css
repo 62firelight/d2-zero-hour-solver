@@ -232,7 +232,7 @@ a {
   width: 250px;
 }
 
-.terminal-buttons button:not(.undo) {
+.terminal-buttons button:not(.progress button) {
   cursor: pointer;
   background-color: transparent;
   border: 0;
@@ -240,14 +240,19 @@ a {
   font-weight: bold;
 }
 
-.terminal-buttons button:not(.undo):hover:enabled {
-  color: #938200;
+@media only screen and (min-width: 800px) {
+  .terminal-buttons button:not(.progress button):hover:enabled {
+    color: #938200;
+  }  
 }
 
-.undo {
+.progress {
   position: absolute;
-  top: 47%;
-  right: 40%;
+  top: 38%;
+  left: 28%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 hr {
