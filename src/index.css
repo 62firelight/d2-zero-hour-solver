@@ -29,13 +29,98 @@ code {
   align-items: center;
 }
 
+table, th, td[style] {
+  border: 2px solid;
+  border-spacing: 0 16px;
+}
+
+table {
+  border-collapse: separate;
+  table-layout: fixed;
+  width: 16em;
+  height: 20em;
+}
+
+.nodes {
+  position: absolute;
+  border: 1px solid;
+  top: 90px;
+  width: 100px;
+  height: 100px;
+}
+
+.node-1 {
+  position: absolute;
+  border: 1px solid;
+  top: 15px;
+  left: 89px;
+  padding: 0.33em 0;
+}
+
+.node-2 {
+  position: absolute;
+  border: 1px solid;
+  top: 55px;
+  left: 89px;
+  padding: 0.33em 0;
+}
+
+.node-3 {
+  position: absolute;
+  border: 1px solid;
+  top: 25px;
+  left: 55px;
+  padding: 0.33em 0;
+  transform: rotate(-20deg);
+}
+
+.node-4 {
+  position: absolute;
+  border: 1px solid;
+  top: 60px;
+  left: 35px;
+  padding: 0 0.95em;
+  height: 10px;
+}
+
+.node-4 span {
+  position: absolute;
+  left: 10px;
+  top: -6px;
+}
+
+.node-5 {
+  position: absolute;
+  border: 1px solid;
+  top: 25px;
+  left: 35px;
+  padding: 0.33em 0;
+  transform: rotate(20deg);
+}
+
+.node-6 {
+  position: absolute;
+  border: 1px solid;
+  top: 15px;
+  left: 1px;
+  padding: 0.33em 0;
+}
+
+.node-7 {
+  position: absolute;
+  border: 1px solid;
+  top: 55px;
+  left: 1px;
+  padding: 0.33em 0;
+}
+
 .room-map {
   width: 300px;
 }
 
 .solution {
   position: absolute;
-  top: 230px;
+  top: 250px;
   font-size: 2em;
   font-weight: bold;
 }

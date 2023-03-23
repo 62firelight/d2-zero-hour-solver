@@ -134,19 +134,48 @@ function App() {
         }
     }
 
+    function getSplitSolution() {
+        if (solutions.length <= 0) {
+            return undefined;
+        }
+
+        const mostRecentSolution = solutions[solutions.length - 1];
+
+        return mostRecentSolution[1].split(" ");
+    }
+
+    const nodeList = [1, 2, 3, 4, 5, 6, 7].map((number) => {
+        const name = `node-${number}`;
+        const splitSolution = getSplitSolution();
+
+        let backgroundColor = "grey";
+        if (splitSolution && number === parseInt(splitSolution[1])) {
+            backgroundColor = splitSolution[0].toLowerCase();
+        }
+
+        return (
+            <div
+                key={name}
+                className={name}
+                style={{ backgroundColor: backgroundColor }}
+            >
+                <span>{number}</span>
+            </div>
+        );
+    });
+
     const terminal1 = (
         <div className="terminal-input">
             <strong>Terminal 1:</strong> {getHoverString(0, false)}
             {getHoverString(1, true)}
         </div>
     );
-    const terminal2 =
-        (
-            <div className="terminal-input">
-                <strong>Terminal 2:</strong> {getHoverString(2, false)}
-                {getHoverString(3, true)}
-            </div>
-        );
+    const terminal2 = (
+        <div className="terminal-input">
+            <strong>Terminal 2:</strong> {getHoverString(2, false)}
+            {getHoverString(3, true)}
+        </div>
+    );
 
     const progress =
         solved >= numberOfSolutions ? (
@@ -171,7 +200,8 @@ function App() {
     const solutionList = solutions
         .map((solution) => <li key={solution[1]}>{solution[1]}</li>)
         .reverse();
-    const mostRecentSolution = solutions.length > 0 ? solutions[solutions.length - 1][1] : "";
+    const mostRecentSolution =
+        solutions.length > 0 ? solutions[solutions.length - 1][1] : "";
 
     return (
         <div className="app">
@@ -181,10 +211,66 @@ function App() {
             <div className="filter-buttons">{filterList}</div>
 
             <div className="room-map-container">
-                <img className="room-map" src="./map.png" alt="room map" />
-                <div className="solution">
-                    {mostRecentSolution}
+                {/* <img className="room-map" src="./map.png" alt="room map" /> */}
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style={{ backgroundColor: "green" }}></td>
+                            <td></td>
+                            <td></td>
+                            <td style={{ backgroundColor: "black" }}></td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td style={{ backgroundColor: "white" }}></td>
+                            <td></td>
+                            <td></td>
+                            <td style={{ backgroundColor: "purple" }}></td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td style={{ backgroundColor: "yellow" }}></td>
+                            <td></td>
+                            <td></td>
+                            <td style={{ backgroundColor: "blue" }}></td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td style={{ backgroundColor: "red" }}></td>
+                            <td></td>
+                            <td></td>
+                            <td style={{ backgroundColor: "cyan" }}></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div className="nodes">
+                    {nodeList}
+                    {/* <div className="node-1">
+                        <span>1</span>
+                    </div>
+                    <div className="node-2">
+                        <span>2</span>
+                    </div>
+                    <div className="node-3">
+                        <span>3</span>
+                    </div>
+                    <div className="node-4">
+                        <span>4</span>
+                    </div>
+                    <div className="node-5">
+                        <span>5</span>
+                    </div>
+                    <div className="node-6">
+                        <span>6</span>
+                    </div>
+                    <div className="node-7">
+                        <span>7</span>
+                    </div> */}
                 </div>
+                <div className="solution">{mostRecentSolution}</div>
             </div>
 
             <div className="terminal-info">
