@@ -47,6 +47,7 @@ table {
   top: 90px;
   width: 100px;
   height: 100px;
+  font-weight: bold;
 }
 
 .node-1 {
@@ -114,6 +115,64 @@ table {
   padding: 0.33em 0;
 }
 
+@media only screen and (min-width: 360px) {
+  table {
+    width: 20em;
+    height: 25em;
+  }
+
+  .nodes {
+    font-size: 1.5em;
+    width: 150px;
+    height: 150px;
+  }
+
+  .node-1 {
+    top: 25px;
+    left: 133px;
+  }
+
+  .node-2 {
+    top: 85px;
+    left: 133px;
+  }
+
+  .node-3 {
+    top: 35px;
+    left: 90px;
+    transform: rotate(-30deg);
+  }
+
+  .node-4 {
+    top: 85px;
+    left: 50px;
+    padding: 0.31em 0.95em;
+    height: 0;
+  }
+
+  .node-4 span {
+    position: absolute;
+    left: 15px;
+    top: -10px;
+  }
+
+  .node-5 {
+    top: 35px;
+    left: 45px;
+    transform: rotate(30deg);
+  }
+
+  .node-6 {
+    top: 25px;
+    left: 2px;
+  }
+
+  .node-7 {
+    top: 85px;
+    left: 2px;
+  }
+}
+
 .room-map {
   width: 300px;
 }
@@ -143,6 +202,10 @@ table {
 .highlight {
   font-weight: bold;
   text-decoration: underline;
+}
+
+h1 {
+  text-align: center;
 }
 
 h1, h2, h3 {
