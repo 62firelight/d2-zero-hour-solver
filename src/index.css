@@ -255,6 +255,10 @@ a {
   align-items: center;
 }
 
+.progress * { 
+  margin: 0 0 0.75em 0;
+}
+
 hr {
   border: 0;
   clear: both;

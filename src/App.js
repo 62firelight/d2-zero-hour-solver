@@ -107,7 +107,7 @@ function App() {
 
         hoverString = (
             <div className="terminal-individual-input">
-                {hoverString.length > 0 && end ? ", " : ""}
+                {hoverString.length > 0 && end ? "" : ""}
                 <div
                     className={
                         input.length === index ? "highlight" : "no-highlight"
@@ -166,14 +166,14 @@ function App() {
 
     const terminal1 = (
         <div className="terminal-input">
-            <strong>Terminal 1:</strong> {getHoverString(0, false)}
-            {getHoverString(1, true)}
+            <strong>Terminal 1 - </strong> Left: {getHoverString(0, false)}{" "}
+            Right: {getHoverString(1, true)}
         </div>
     );
     const terminal2 = (
         <div className="terminal-input">
-            <strong>Terminal 2:</strong> {getHoverString(2, false)}
-            {getHoverString(3, true)}
+            <strong>Terminal 2 - </strong> Left: {getHoverString(2, false)}{" "}
+            Right: {getHoverString(3, true)}
         </div>
     );
 
@@ -246,9 +246,7 @@ function App() {
                         </tr>
                     </tbody>
                 </table>
-                <div className="nodes">
-                    {nodeList}
-                </div>
+                <div className="nodes">{nodeList}</div>
                 <div className="solution">{mostRecentSolution}</div>
             </div>
 
