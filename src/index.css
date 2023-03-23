@@ -248,7 +248,7 @@ a {
 
 .progress {
   position: absolute;
-  top: 38%;
+  top: 34%;
   left: 28%;
   display: flex;
   flex-flow: column nowrap;

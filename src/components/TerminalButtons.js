@@ -33,6 +33,7 @@ function TerminalButtons(props) {
             {buttonList}
             <img className="wheel" src="./wheel.png" alt="button wheel" />
             <div className="progress">
+                <button onClick={() => props.undo()}>Undo</button>
                 {props.progress}
                 <button
                     type="button"
@@ -40,7 +41,6 @@ function TerminalButtons(props) {
                 >
                     Reset
                 </button>
-                <button onClick={() => props.undo()}>Undo</button>
             </div>
         </div>
     );
