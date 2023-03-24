@@ -68,6 +68,16 @@ function App() {
     }
 
     function toggleElement(element) {
+        if (solved > 0) {
+            const userConfirm = window.confirm(
+                "Are you sure that you want to reset your progress?"
+            );
+
+            if (!userConfirm) {
+                return;
+            }
+        }
+
         setElement(element);
         const newSolutionMap = NODE_MAP.get(element);
         setSolutionMap(newSolutionMap);
