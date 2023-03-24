@@ -187,16 +187,11 @@ function App() {
         </div>
     );
 
-    const progress =
-        solved >= numberOfSolutions ? (
-            <strong>
-                Finished: {solved} / {numberOfSolutions}
-            </strong>
-        ) : (
-            <strong>
-                Progress: {solved} / {numberOfSolutions}
-            </strong>
-        );
+    const progress = (
+        <div>
+            <strong>Progress:</strong> {solved} / {numberOfSolutions}
+        </div>
+    );
 
     // let terminalNumber = 1;
     // if (input.length >= 2) {
