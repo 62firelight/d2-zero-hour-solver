@@ -207,7 +207,7 @@ function App() {
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
 
-            <h2>Configuration</h2>
+            <h2>{element} Configuration</h2>
             <div className="filter-buttons">{filterList}</div>
 
             <div className="room-map-container">
