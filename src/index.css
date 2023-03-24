@@ -233,6 +233,10 @@ a {
   margin: 0 0 2em 0;
 }
 
+.clear-inputs {
+  margin: 0.5em 0;
+}
+
 /* Code for positioning buttons comes from Pastuleo23 (AKA Cheese Forever on YouTube) */
 /* Cheese Forever's channel: https://www.youtube.com/channel/UCl1M49CAo9u99gABBIqEgDQ */
 .terminal-buttons {

@@ -256,7 +256,7 @@ function App() {
                 <div className="solution">{mostRecentSolution}</div>
             </div>
 
-            {solved >= numberOfSolutions ? (<ReactConfetti />) : ("")}
+            {solved >= numberOfSolutions ? <ReactConfetti /> : ""}
 
             <div className="terminal-info">
                 <div className="terminal-inputs">
@@ -267,6 +267,14 @@ function App() {
             {/* <h2>
                 Input Terminal {terminalNumber} ({inputSide})
             </h2> */}
+
+            <button
+                className="clear-inputs"
+                disabled={input.length <= 0}
+                onClick={() => setInput([])}
+            >
+                Clear Inputs
+            </button>
 
             <TerminalButtons
                 disabled={disabled}
