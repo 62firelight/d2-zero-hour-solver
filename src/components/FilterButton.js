@@ -37,8 +37,8 @@ function FilterButton(props) {
             style={{
                 backgroundColor: ELEMENT_COLORS.get(props.element),
                 border: props.isPressed
-                    ? `6px solid ${getBorderColor()}`
-                    : "6px solid transparent",
+                    ? `8px solid ${getBorderColor()}`
+                    : "8px solid transparent",
             }}
             title={props.element}
             onClick={() => props.toggleElement(props.element)}
