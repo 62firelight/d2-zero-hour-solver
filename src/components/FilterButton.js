@@ -1,7 +1,7 @@
 import React from "react";
 
 const ELEMENT_COLORS = new Map([
-    ["Void", "purple"],
+    ["Void", "fuchsia"],
     ["Solar", "orange"],
     ["Arc", "lightblue"],
 ]);
@@ -13,13 +13,31 @@ function FilterButton(props) {
     //     <div>{props.element}</div>
     // );
 
+    function getBorderColor() {
+        let color = props.element;
+
+        if (color === "Void") {
+            return "purple";
+        }
+        
+        if (color === "Solar") {
+            return "rgb(121, 79, 0)";
+        }
+
+        if (color === "Arc") {
+            return "rgb(36, 99, 119)";
+        }
+
+        return "black";
+    }
+
     return (
         <button
             className="filter-button"
             style={{
                 backgroundColor: ELEMENT_COLORS.get(props.element),
                 border: props.isPressed
-                    ? "6px solid"
+                    ? `6px solid ${getBorderColor()}`
                     : "6px solid transparent",
             }}
             title={props.element}
