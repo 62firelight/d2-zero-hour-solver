@@ -252,7 +252,10 @@ function App() {
                         </tr>
                     </tbody>
                 </table>
-                <div className="nodes">{nodeList}<div className="small-room-entrance"></div></div>
+                <div className="nodes">
+                    {nodeList}
+                    <div className="small-room-entrance"></div>
+                </div>
                 <div className="solution">{mostRecentSolution}</div>
                 <div className="big-room-entrance"></div>
             </div>
@@ -290,6 +293,17 @@ function App() {
             <h2>History</h2>
             <ul>{solutionList.length > 0 ? solutionList : "<empty>"}</ul>
 
+            <p>
+                Credit to /u/pastuleo23 for creating the wheel image (
+                <a
+                    href="https://www.reddit.com/r/raidsecrets/comments/bmi7fv/void_configuration_solution_solver_mobile_support/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Link
+                </a>
+                )
+            </p>
             <hr />
 
             <h2>Vault Route</h2>
@@ -298,9 +312,17 @@ function App() {
                 src={FILTER_MAP[element]}
                 alt="route map"
             />
-            <a href="https://www.shacknews.com/article/111630/zero-hour-mission-guide-destiny-2">
-                Source
-            </a>
+            <p>
+                Credit to /u/KPA for the routes (
+                <a
+                    href="https://www.reddit.com/r/DestinyTheGame/comments/brdehh/fire_room_solutions_solar_arc_void_configurations/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Link
+                </a>
+                )
+            </p>
         </div>
     );
 }
