@@ -252,8 +252,9 @@ function App() {
                         </tr>
                     </tbody>
                 </table>
-                <div className="nodes">{nodeList}</div>
+                <div className="nodes">{nodeList}<div className="small-room-entrance"></div></div>
                 <div className="solution">{mostRecentSolution}</div>
+                <div className="big-room-entrance"></div>
             </div>
 
             {solved >= numberOfSolutions ? <ReactConfetti /> : ""}
@@ -273,7 +274,7 @@ function App() {
                 disabled={input.length <= 0}
                 onClick={() => setInput([])}
             >
-                Clear Inputs
+                Clear Terminals
             </button>
 
             <TerminalButtons

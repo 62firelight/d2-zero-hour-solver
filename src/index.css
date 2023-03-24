@@ -188,6 +188,20 @@ table {
   width: 300px;
 }
 
+.big-room-entrance {
+  width: 100px;
+  height: 2px;
+  transform: translate(0px, -2px);
+  background-color: white;
+}
+
+.small-room-entrance {
+  width: 75px;
+  height: 2px;
+  transform: translate(37.5px, 150px);
+  background-color: white;
+}
+
 .solution {
   position: absolute;
   top: 250px;
