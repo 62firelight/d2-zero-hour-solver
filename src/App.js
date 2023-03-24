@@ -5,6 +5,7 @@ import TerminalButtons from "./components/TerminalButtons";
 import ArrayKeyedMap from "array-keyed-map";
 import NODE_MAP from "./components/NODE_MAP";
 import FILTER_MAP from "./components/FILTER_MAP";
+import ReactConfetti from "react-confetti";
 
 const ELEMENTS = Object.keys(FILTER_MAP);
 
@@ -254,6 +255,8 @@ function App() {
                 <div className="nodes">{nodeList}</div>
                 <div className="solution">{mostRecentSolution}</div>
             </div>
+
+            {solved >= numberOfSolutions ? (<ReactConfetti />) : ("")}
 
             <div className="terminal-info">
                 <div className="terminal-inputs">
