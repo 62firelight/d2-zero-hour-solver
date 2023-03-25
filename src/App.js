@@ -323,6 +323,11 @@ function App() {
                 </a>
                 )
             </p>
+            <hr />
+
+            Created by 62firelight
+            <a href="https://github.com/62firelight/d2-zero-hour-solver" target="_blank" rel="noreferrer">GitHub</a>
+            <br />
         </div>
     );
 }
