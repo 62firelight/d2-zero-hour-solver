@@ -43,8 +43,9 @@ function Guide() {
             <p>
                 Inside each of these 7 coloured rooms are{" "}
                 <strong>7 servers</strong> located in specific positions. They
-                are marked 1 to 7 according to their position. On the map above,
-                the servers and their positions can be seen in the middle.
+                are marked 1 to 7 according to their position. On the{" "}
+                <a href="#map">map above</a>, the servers and their positions
+                can be seen in the middle.
             </p>
             <p>
                 The goal of the puzzle is to{" "}
@@ -66,9 +67,10 @@ function Guide() {
                 sequence of numbers on the terminals will correspond to a
                 specific server around the room. For example, if 1 and 2 are
                 highlighted on terminal 1 during a void configuration, the
-                server <strong>Green 4</strong> must be activated. Once Green 4
-                has been activated, the terminal(s) will change numbers and will
-                need to be read again to find the next server to activate.{" "}
+                server <span style={{ color: "green" }}>Green 4</span> must be
+                activated. Once Green 4 has been activated, the terminal(s) will
+                change numbers and will need to be read again to find the next
+                server to activate.{" "}
                 <strong>In some cases, numbers from another terminal</strong>{" "}
                 need to be read in order to narrow down the specific server to
                 activate. Only a maximum of 2 terminals are required to complete
@@ -109,10 +111,12 @@ function Guide() {
             </p>
             <p>
                 Once a sequence of numbers has been entered, the location of the
-                server will be shown on the map (e.g. "Cyan 5"), along with the
-                location of the server within the room. Keep in mind that the
-                solver will reset itself to the left circle of terminal 1 for
-                each successful sequence of numbers that are read.
+                server will be shown on the map (e.g. "
+                <span style={{ color: "cyan" }}>Cyan 5</span>
+                "), along with the location of the server within the room. Keep
+                in mind that the solver will reset itself to the left circle of
+                terminal 1 for each successful sequence of numbers that are
+                read.
             </p>
             <p>
                 The solver will automatically keep track of what servers have
@@ -127,6 +131,21 @@ function Guide() {
                 <li>
                     When activating the correct server, 15 seconds will be added
                     to the mission timer.
+                </li>
+                <li>
+                    <strong>Terminal 1</strong> is located between the entrances
+                    to the <span style={{ color: "green" }}>Green</span> and{" "}
+                    <span style={{ color: "gray" }}>White</span> rooms.
+                </li>
+                <li>
+                    <strong>Terminal 2</strong> is located between the entrances
+                    to the <span style={{ color: "#8B8000" }}>Yellow</span> and{" "}
+                    <span style={{ color: "red" }}>Red</span> rooms.
+                </li>
+                <li>
+                    <strong>Terminal 3</strong> is located between the entrances
+                    to the <span style={{ color: "blue" }}>Blue</span> and{" "}
+                    <span style={{ color: "cyan" }}>Cyan</span> rooms.
                 </li>
                 <li>It is possible to complete the puzzle solo.</li>
             </ul>
