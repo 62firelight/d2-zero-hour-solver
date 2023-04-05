@@ -237,7 +237,7 @@ h1, h2, h3 {
   margin: 0;
 }
 
-ul {
+ul.history {
   list-style: none;
   margin: 0 0 1em 0;
   padding: 0;
@@ -418,5 +418,14 @@ hr {
   line-height: 50px;
   width: 50px;
   height: 50px;
+  text-align: center;
+}
+
+.how-to-guide {
+  margin: 0 1em 1em 1em;
+  max-width: 480px;
+}
+
+.how-to-guide h3 {
   text-align: center;
 }
