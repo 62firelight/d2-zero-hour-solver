@@ -229,7 +229,7 @@ table {
   text-decoration: underline;
 }
 
-h1 {
+h1, h2, h3 {
   text-align: center;
 }
 
@@ -424,8 +424,4 @@ hr {
 .how-to-guide {
   margin: 0 1em 1em 1em;
   max-width: 480px;
-}
-
-.how-to-guide h3 {
-  text-align: center;
 }
