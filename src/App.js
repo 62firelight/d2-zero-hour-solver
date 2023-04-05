@@ -7,6 +7,7 @@ import ArrayKeyedMap from "array-keyed-map";
 import NODE_MAP from "./components/NODE_MAP";
 import FILTER_MAP from "./components/FILTER_MAP";
 import ReactConfetti from "react-confetti";
+import Map from "./components/Map";
 
 const ELEMENTS = Object.keys(FILTER_MAP);
 
@@ -146,36 +147,6 @@ function App() {
         }
     }
 
-    function getSplitSolution() {
-        if (solutions.length <= 0) {
-            return undefined;
-        }
-
-        const mostRecentSolution = solutions[solutions.length - 1];
-
-        return mostRecentSolution[1].split(" ");
-    }
-
-    const nodeList = [1, 2, 3, 4, 5, 6, 7].map((number) => {
-        const name = `node-${number}`;
-        const splitSolution = getSplitSolution();
-
-        let backgroundColor = "grey";
-        if (splitSolution && number === parseInt(splitSolution[1])) {
-            backgroundColor = splitSolution[0].toLowerCase();
-        }
-
-        return (
-            <div
-                key={name}
-                className={name}
-                style={{ backgroundColor: backgroundColor }}
-            >
-                <span>{number}</span>
-            </div>
-        );
-    });
-
     const terminal1 = (
         <div className="terminal-input">
             <strong>Terminal 1</strong> - {getHoverString(0, false)}{" "}
@@ -207,58 +178,21 @@ function App() {
     const solutionList = solutions
         .map((solution) => <li key={solution[1]}>{solution[1]}</li>)
         .reverse();
-    const mostRecentSolution =
-        solutions.length > 0 ? solutions[solutions.length - 1][1] : "";
 
     return (
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
             <h2>{element} Configuration</h2>
             <div className="filter-buttons">{filterList}</div>
-            <div className="room-map-container" id="map">
-                {/* <img className="room-map" src="./map.png" alt="room map" /> */}
-                <table>
-                    <tbody>
-                        <tr>
-                            <td style={{ backgroundColor: "green" }}></td>
-                            <td></td>
-                            <td></td>
-                            <td style={{ backgroundColor: "black" }}></td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td style={{ backgroundColor: "white" }}></td>
-                            <td></td>
-                            <td></td>
-                            <td style={{ backgroundColor: "purple" }}></td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td style={{ backgroundColor: "yellow" }}></td>
-                            <td></td>
-                            <td></td>
-                            <td style={{ backgroundColor: "blue" }}></td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td style={{ backgroundColor: "red" }}></td>
-                            <td></td>
-                            <td></td>
-                            <td style={{ backgroundColor: "cyan" }}></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div className="nodes">
-                    {nodeList}
-                    <div className="small-room-entrance"></div>
-                </div>
-                <div className="solution">{mostRecentSolution}</div>
-                <div className="big-room-entrance"></div>
-            </div>
-            {solved >= numberOfSolutions ? <ReactConfetti /> : ""}
+            <Map solutions={solutions} />
+            {solved >= numberOfSolutions ? (
+                <ReactConfetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                />
+            ) : (
+                ""
+            )}
             <div className="terminal-info">
                 <div className="terminal-inputs">
                     {terminal1}
