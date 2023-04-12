@@ -1,28 +1,23 @@
+import Map from "./Map";
+
 function Guide() {
     return (
         <div className="how-to-guide">
             <h2>Guide</h2>
             <p>
-                <strong>Note: </strong>the{" "}
-                <span style={{ color: "blue" }}>Blue</span>,{" "}
-                <span style={{ color: "green" }}>Green</span> and{" "}
-                <span style={{ color: "red" }}>Red</span> keycards are also
-                required to be collected to gain the reward associated with the
-                puzzle.
-            </p>
-            <h3>Overview</h3>
-            <p>
-                The puzzle is located near the end of the{" "}
+                The puzzle is located before the final boss of the{" "}
                 <strong>Zero Hour mission. </strong>
                 Specifically, it is inside the{" "}
                 <strong>large exhibit room</strong> just after the white tile
                 room that will incinerate any players inside it if the wrong
                 tile is stepped on, and just before dropping down the hole into
-                the passage that leads to the boss fight. See the{" "}
-                <a href="#map">top of this page</a> for a map of the exhibit
-                room.
+                the passage that leads to the boss fight. See the map below or
+                at the <a href="#map">top of this page</a> to see the layout of
+                the exhibit room.
             </p>
+            <h3>Map</h3>
             {/* image of exhibit room */}
+            <Map />
             <p>
                 The exhibit room has 8 rooms running along the left and right
                 sides. 1 of those rooms on the far-right side of the room (the
@@ -43,9 +38,8 @@ function Guide() {
             <p>
                 Inside each of these 7 coloured rooms are{" "}
                 <strong>7 servers</strong> located in specific positions. They
-                are marked 1 to 7 according to their position. On the{" "}
-                <a href="#map">map above</a>, the servers and their positions
-                can be seen in the middle.
+                are marked 1 to 7 according to their position. On the map above,
+                the servers and their positions can be seen in the middle.
             </p>
             <p>
                 The goal of the puzzle is to{" "}
@@ -85,6 +79,13 @@ function Guide() {
                 Once ready, the puzzle can be started by interacting with one of
                 the three terminals. A "Begin Sequencing" prompt will appear
                 when looking at a terminal.
+            </p>
+            <p>
+                Remember to have collected the{" "}
+                <span style={{ color: "blue" }}>Blue</span>,{" "}
+                <span style={{ color: "green" }}>Green</span> and{" "}
+                <span style={{ color: "red" }}>Red</span> keycards beforehand to
+                gain the reward associated with the puzzle.
             </p>
             <p>
                 Once all 49 servers have been activated, a noise will play and

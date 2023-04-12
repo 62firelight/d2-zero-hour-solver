@@ -1,9 +1,9 @@
 function Map(props) {
     const mostRecentSolution =
-        props.solutions.length > 0 ? props.solutions[props.solutions.length - 1][1] : "";
+    props.solutions && props.solutions.length > 0 ? props.solutions[props.solutions.length - 1][1] : "";
 
     function getSplitSolution() {
-        if (props.solutions.length <= 0) {
+        if (props.solutions === undefined || props.solutions.length <= 0) {
             return undefined;
         }
 
