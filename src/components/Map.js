@@ -36,34 +36,34 @@ function Map(props) {
             <table>
                 <tbody>
                     <tr>
-                        <td style={{ backgroundColor: "green" }}></td>
+                        <td style={{ backgroundColor: "green" }} title="Green"></td>
                         <td></td>
                         <td></td>
-                        <td style={{ backgroundColor: "black" }}></td>
+                        <td style={{ backgroundColor: "black" }} title="Boss"></td>
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td style={{ backgroundColor: "white" }}></td>
+                        <td style={{ backgroundColor: "white" }} title="White"></td>
                         <td></td>
                         <td></td>
-                        <td style={{ backgroundColor: "purple" }}></td>
+                        <td style={{ backgroundColor: "purple" }} title="Purple"></td>
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td style={{ backgroundColor: "yellow" }}></td>
+                        <td style={{ backgroundColor: "yellow" }} title="Yellow"></td>
                         <td></td>
                         <td></td>
-                        <td style={{ backgroundColor: "blue" }}></td>
+                        <td style={{ backgroundColor: "blue" }} title="Blue"></td>
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td style={{ backgroundColor: "red" }}></td>
+                        <td style={{ backgroundColor: "red" }} title="Red"></td>
                         <td></td>
                         <td></td>
-                        <td style={{ backgroundColor: "cyan" }}></td>
+                        <td style={{ backgroundColor: "cyan" }} title="Cyan"></td>
                     </tr>
                 </tbody>
             </table>
