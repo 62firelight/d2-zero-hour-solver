@@ -176,7 +176,11 @@ function App() {
     // const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
 
     const solutionList = solutions
-        .map((solution) => <li key={solution[1]}>{solution[1]}</li>)
+        .map((solution, index) => (
+            <li key={solution[1]}>
+                <strong>{index + 1}.</strong> {solution[1]}
+            </li>
+        ))
         .reverse();
 
     return (
