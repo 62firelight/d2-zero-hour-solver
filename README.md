@@ -6,6 +6,6 @@ Heavily inspired by a similar app from pastuleo23 (AKA [Cheese Forever on YouTub
 
 ## Usage
 
-Access the app here: https://d2-zero-hour-solver-62f.netlify.app/
+Access the app here: https://d2-zero-hour-solver.pages.dev/
 
 Alternatively, you can clone the repo, run `npm install` inside the cloned repo to install dependencies and then `npm start` to start the development server at http://localhost:3000/.
