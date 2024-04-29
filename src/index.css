@@ -426,6 +426,17 @@ hr {
   max-width: 480px;
 }
 
+iframe {
+  margin: 0 0 1em 0;
+  max-width: 480px;
+}
+
+.how-to-guide img {
+  display: block;
+  margin: 1em auto;
+  max-width: 480px;
+}
+
 span[style] {
   font-weight: bold;
 }

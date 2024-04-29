@@ -1,4 +1,4 @@
-function Map(props) {
+function RoomMap(props) {
     const mostRecentSolution =
     props.solutions && props.solutions.length > 0 ? props.solutions[props.solutions.length - 1][1] : "";
 
@@ -77,4 +77,4 @@ function Map(props) {
     );
 }
 
-export default Map;
+export default RoomMap;

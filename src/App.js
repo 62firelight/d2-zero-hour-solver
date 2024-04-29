@@ -7,9 +7,19 @@ import ArrayKeyedMap from "array-keyed-map";
 import NODE_MAP from "./components/NODE_MAP";
 import FILTER_MAP from "./components/FILTER_MAP";
 import ReactConfetti from "react-confetti";
-import Map from "./components/Map";
+import RoomMap from "./components/RoomMap";
 
 const ELEMENTS = Object.keys(FILTER_MAP);
+const ELEMENT_COLORS = new Map([
+    ["Void", "fuchsia"],
+    ["Solar", "orange"],
+    ["Arc", "lightblue"],
+]);
+const BORDER_COLORS = new Map([
+    ["Void", "purple"],
+    ["Solar", "rgb(121, 79, 0)"],
+    ["Arc", "rgb(36, 99, 119)"]
+]);
 
 function App() {
     const [element, setElement] = useState("Void");
@@ -95,6 +105,20 @@ function App() {
         setInput([...input, terminalInput]);
     }
 
+    function getElementColor(element) {
+        return ELEMENT_COLORS.get(element);
+    }
+
+    function getBorderColor() {
+        let color = BORDER_COLORS.get(element);
+
+        if (color === undefined) {
+            return "black";
+        }
+
+        return color;
+    }
+
     const filterList = ELEMENTS.map((name) => {
         return (
             <FilterButton
@@ -102,6 +126,8 @@ function App() {
                 element={name}
                 isPressed={name === element}
                 toggleElement={toggleElement}
+                getElementColor={getElementColor}
+                getBorderColor={getBorderColor}
             />
         );
     });
@@ -188,7 +214,7 @@ function App() {
             <h1>Destiny 2 Zero Hour Solver</h1>
             <h2>{element} Configuration</h2>
             <div className="filter-buttons">{filterList}</div>
-            <Map solutions={solutions} />
+            <RoomMap solutions={solutions} />
             {solved >= numberOfSolutions ? (
                 <ReactConfetti
                     width={window.innerWidth}
@@ -266,7 +292,10 @@ function App() {
             </a>
             {/* <br /> */}
             <hr />
-            <Guide />
+            <Guide 
+                element={element}
+                getBorderColor={getBorderColor}
+            />
         </div>
     );
 }
