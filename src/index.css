@@ -421,20 +421,38 @@ hr {
   text-align: center;
 }
 
+.credit {
+  text-align: center;
+}
+
 .how-to-guide {
   margin: 0 1em 1em 1em;
-  max-width: 480px;
+  max-width: 320px;
 }
 
 iframe {
   margin: 0 0 1em 0;
-  max-width: 480px;
+  max-width: 320px;
 }
 
 .how-to-guide img {
   display: block;
   margin: 1em auto;
-  max-width: 480px;
+  max-width: 320px;
+}
+
+@media only screen and (min-width: 480px) {
+  .how-to-guide {
+    max-width: 480px;
+  }
+  
+  iframe {
+    max-width: 480px;
+  }
+  
+  .how-to-guide img {
+    max-width: 480px;
+  }  
 }
 
 span[style] {

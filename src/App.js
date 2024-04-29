@@ -252,7 +252,7 @@ function App() {
             <ul className="history">
                 {solutionList.length > 0 ? solutionList : "<empty>"}
             </ul>
-            <p>
+            <p className="credit">
                 Credit to /u/pastuleo23 for creating the wheel image (
                 <a
                     href="https://www.reddit.com/r/raidsecrets/comments/bmi7fv/void_configuration_solution_solver_mobile_support/"
@@ -270,7 +270,7 @@ function App() {
                 src={FILTER_MAP[element]}
                 alt="route map"
             />
-            <p>
+            <p className="credit">
                 Credit to /u/KPA for the routes (
                 <a
                     href="https://www.reddit.com/r/DestinyTheGame/comments/brdehh/fire_room_solutions_solar_arc_void_configurations/"

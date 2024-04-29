@@ -158,8 +158,8 @@ function Guide(props) {
                 12. <strong>1 of these sections</strong> will be{" "}
                 <strong>highlighted in yellow</strong> for each circle. This
                 highlighted section needs to be read out as a number. The
-                combination of numbers on the terminals indicates which server
-                must be activated.
+                combination of highlighted sections on the terminals will
+                indicate which server must be activated.
             </p>
             {/* image of terminal and their locations */}
             <img src="./WheelNumbers.png" alt="Numbers for the circles" />
