@@ -421,8 +421,12 @@ hr {
   text-align: center;
 }
 
-.credit {
+.credit, .alert {
   text-align: center;
+}
+
+.alert {
+  color: red;
 }
 
 .how-to-guide {

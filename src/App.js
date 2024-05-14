@@ -10,6 +10,11 @@ import ReactConfetti from "react-confetti";
 import RoomMap from "./components/RoomMap";
 
 const ELEMENTS = Object.keys(FILTER_MAP);
+const ELEMENT_NAMES = new Map([
+    ["Void", "Week 1"],
+    ["Solar", "Week 2"],
+    ["Arc", "Week 3"],
+]);
 const ELEMENT_COLORS = new Map([
     ["Void", "fuchsia"],
     ["Solar", "orange"],
@@ -18,7 +23,7 @@ const ELEMENT_COLORS = new Map([
 const BORDER_COLORS = new Map([
     ["Void", "purple"],
     ["Solar", "rgb(121, 79, 0)"],
-    ["Arc", "rgb(36, 99, 119)"]
+    ["Arc", "rgb(36, 99, 119)"],
 ]);
 
 function App() {
@@ -103,6 +108,10 @@ function App() {
 
     function setTerminalInput(terminalInput) {
         setInput([...input, terminalInput]);
+    }
+
+    function getElementName(element) {
+        return ELEMENT_NAMES.get(element);
     }
 
     function getElementColor(element) {
@@ -212,7 +221,7 @@ function App() {
     return (
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
-            <h2>{element} Configuration</h2>
+            <h2>{getElementName(element)}</h2>
             <div className="filter-buttons">{filterList}</div>
             <RoomMap solutions={solutions} />
             {solved >= numberOfSolutions ? (
@@ -264,7 +273,8 @@ function App() {
                 )
             </p>
             <p className="credit">
-                Credit to /u/floory565 for creating the spreadsheet that this solver's solutions are based on (
+                Credit to /u/floory565 for creating the spreadsheet that this
+                solver's solutions are based on (
                 <a
                     href="https://www.reddit.com/r/raidsecrets/comments/boryo5/heres_a_compact_and_concise_zero_hour_puzzle/"
                     target="_blank"
@@ -293,6 +303,13 @@ function App() {
                 )
             </p>
             <hr />
+            <p className="alert">
+                <strong>PLEASE READ:</strong> <br></br>
+                This website is in the middle of an overhaul. The new version of <br></br>
+                Zero Hour does not feature the same puzzle so the solver and <br></br>
+                guide are oudated. The vault route should be up to date (at <br></br>
+                least for the normal version). 
+            </p>
             Created by 62firelight
             <a
                 href="https://github.com/62firelight/d2-zero-hour-solver"
@@ -303,10 +320,7 @@ function App() {
             </a>
             {/* <br /> */}
             <hr />
-            <Guide 
-                element={element}
-                getBorderColor={getBorderColor}
-            />
+            <Guide element={element} getBorderColor={getBorderColor} />
         </div>
     );
 }
