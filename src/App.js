@@ -1,13 +1,13 @@
 import "./App.css";
 import FilterButton from "./components/FilterButton";
-import { useMemo, useState } from "react";
-import TerminalButtons from "./components/TerminalButtons";
-import Guide from "./components/Guide";
-import ArrayKeyedMap from "array-keyed-map";
-import NODE_MAP from "./components/NODE_MAP";
+import { useState } from "react";
+// import TerminalButtons from "./components/TerminalButtons";
+// import Guide from "./components/Guide";
+// import ArrayKeyedMap from "array-keyed-map";
+// import NODE_MAP from "./components/NODE_MAP";
 import FILTER_MAP from "./components/FILTER_MAP";
-import ReactConfetti from "react-confetti";
-import RoomMap from "./components/RoomMap";
+// import ReactConfetti from "react-confetti";
+// import RoomMap from "./components/RoomMap";
 
 const ELEMENTS = Object.keys(FILTER_MAP);
 const ELEMENT_NAMES = new Map([
@@ -27,88 +27,88 @@ const BORDER_COLORS = new Map([
 ]);
 
 function App() {
-    const [element, setElement] = useState("Void");
-    const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
-    const [solutions, setSolutions] = useState([]);
-    const [input, setInput] = useState([]);
-    const [hoverInput, setHoverInput] = useState(-1);
+    const [element] = useState("Void");
+    // const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
+    // const [solutions, setSolutions] = useState([]);
+    // const [input, setInput] = useState([]);
+    // const [hoverInput, setHoverInput] = useState(-1);
 
-    const solved = NODE_MAP.get(element).size - solutionMap.size;
-    const numberOfSolutions = NODE_MAP.get(element).size;
+    // const solved = NODE_MAP.get(element).size - solutionMap.size;
+    // const numberOfSolutions = NODE_MAP.get(element).size;
 
-    const disabled = useMemo(() => {
-        const nodeKeys = [...solutionMap.keys()];
-        let newDisabled = [];
-        for (let i = 1; i < 13; i++) {
-            // Make a copy of input
-            const newInput = input.slice(0);
+    // const disabled = useMemo(() => {
+    //     const nodeKeys = [...solutionMap.keys()];
+    //     let newDisabled = [];
+    //     for (let i = 1; i < 13; i++) {
+    //         // Make a copy of input
+    //         const newInput = input.slice(0);
 
-            // Add on a new number to check potential outcomes
-            newInput.push(i);
+    //         // Add on a new number to check potential outcomes
+    //         newInput.push(i);
 
-            // Check which inputs should not be disabled
-            const shouldNotBeDisabled = nodeKeys.some((key) => {
-                // Make a copy of the first X elements of the key
-                // where X is the length of newInput
-                const keyCopy = key.slice(0, newInput.length);
+    //         // Check which inputs should not be disabled
+    //         const shouldNotBeDisabled = nodeKeys.some((key) => {
+    //             // Make a copy of the first X elements of the key
+    //             // where X is the length of newInput
+    //             const keyCopy = key.slice(0, newInput.length);
 
-                // Check if the key starts with exactly the same elements
-                // as newInput
-                const startsWith = keyCopy.every((element, index) => {
-                    return element === parseInt(newInput[index]);
-                });
+    //             // Check if the key starts with exactly the same elements
+    //             // as newInput
+    //             const startsWith = keyCopy.every((element, index) => {
+    //                 return element === parseInt(newInput[index]);
+    //             });
 
-                // Check that newInput is not longer than the key
-                const notLongerThanKey = newInput.length <= key.length;
-                return startsWith && notLongerThanKey;
-            });
+    //             // Check that newInput is not longer than the key
+    //             const notLongerThanKey = newInput.length <= key.length;
+    //             return startsWith && notLongerThanKey;
+    //         });
 
-            // console.log(newInput, shouldNotBeDisabled);
+    //         // console.log(newInput, shouldNotBeDisabled);
 
-            if (!shouldNotBeDisabled) {
-                newDisabled.push(i);
-            }
-        }
-        return newDisabled;
-    }, [input, solutionMap]);
+    //         if (!shouldNotBeDisabled) {
+    //             newDisabled.push(i);
+    //         }
+    //     }
+    //     return newDisabled;
+    // }, [input, solutionMap]);
 
     // Show solution
-    if (disabled.length === 12 && solved < numberOfSolutions) {
-        const newSolution = [input, solutionMap.get(input)];
-        setSolutions([...solutions, newSolution]);
+    // if (disabled.length === 12 && solved < numberOfSolutions) {
+    //     const newSolution = [input, solutionMap.get(input)];
+    //     setSolutions([...solutions, newSolution]);
 
-        const solutionMapCopy = new ArrayKeyedMap(solutionMap);
-        solutionMapCopy.delete(input);
-        setSolutionMap(solutionMapCopy);
+    //     const solutionMapCopy = new ArrayKeyedMap(solutionMap);
+    //     solutionMapCopy.delete(input);
+    //     setSolutionMap(solutionMapCopy);
 
-        setInput([]);
-        setHoverInput(-1);
-    }
+    //     setInput([]);
+    //     setHoverInput(-1);
+    // }
 
-    function toggleElement(element) {
-        if (solved > 0) {
-            const userConfirm = window.confirm(
-                "Are you sure that you want to reset your progress?"
-            );
+    // function toggleElement(element) {
+    //     if (solved > 0) {
+    //         const userConfirm = window.confirm(
+    //             "Are you sure that you want to reset your progress?"
+    //         );
 
-            if (!userConfirm) {
-                return;
-            }
-        }
+    //         if (!userConfirm) {
+    //             return;
+    //         }
+    //     }
 
-        setElement(element);
-        const newSolutionMap = NODE_MAP.get(element);
-        setSolutionMap(newSolutionMap);
+    //     setElement(element);
+    //     const newSolutionMap = NODE_MAP.get(element);
+    //     setSolutionMap(newSolutionMap);
 
-        setSolutions([]);
+    //     setSolutions([]);
 
-        setInput([]);
-        setHoverInput(-1);
-    }
+    //     setInput([]);
+    //     setHoverInput(-1);
+    // }
 
-    function setTerminalInput(terminalInput) {
-        setInput([...input, terminalInput]);
-    }
+    // function setTerminalInput(terminalInput) {
+    //     setInput([...input, terminalInput]);
+    // }
 
     function getElementName(element) {
         return ELEMENT_NAMES.get(element);
@@ -134,72 +134,72 @@ function App() {
                 key={name}
                 element={name}
                 isPressed={name === element}
-                toggleElement={toggleElement}
+                // toggleElement={toggleElement}
                 getElementColor={getElementColor}
                 getBorderColor={getBorderColor}
             />
         );
     });
 
-    function getHoverString(index, end) {
-        let assignedHoverInput =
-            input.length === index &&
-            hoverInput !== -1 &&
-            !disabled.includes(hoverInput)
-                ? hoverInput.toString()
-                : "?";
+    // function getHoverString(index, end) {
+    //     let assignedHoverInput =
+    //         input.length === index &&
+    //         hoverInput !== -1 &&
+    //         !disabled.includes(hoverInput)
+    //             ? hoverInput.toString()
+    //             : "?";
 
-        let hoverString = input[index]
-            ? input[index].toString()
-            : assignedHoverInput;
+    //     let hoverString = input[index]
+    //         ? input[index].toString()
+    //         : assignedHoverInput;
 
-        hoverString = (
-            <div className="terminal-individual-input">
-                <div
-                    className={
-                        input.length === index ? "highlight" : "no-highlight"
-                    }
-                >
-                    {hoverString.length > 0 && end ? "Right: " : "Left: "}{" "}
-                    {hoverString}
-                </div>
-            </div>
-        );
+    //     hoverString = (
+    //         <div className="terminal-individual-input">
+    //             <div
+    //                 className={
+    //                     input.length === index ? "highlight" : "no-highlight"
+    //                 }
+    //             >
+    //                 {hoverString.length > 0 && end ? "Right: " : "Left: "}{" "}
+    //                 {hoverString}
+    //             </div>
+    //         </div>
+    //     );
 
-        return hoverString;
-    }
+    //     return hoverString;
+    // }
 
-    function undo() {
-        const mostRecentSolution = solutions.pop();
+    // function undo() {
+    //     const mostRecentSolution = solutions.pop();
 
-        if (mostRecentSolution) {
-            const solutionMapCopy = new ArrayKeyedMap(solutionMap);
-            solutionMapCopy.set(mostRecentSolution[0], mostRecentSolution[1]);
-            setSolutionMap(solutionMapCopy);
+    //     if (mostRecentSolution) {
+    //         const solutionMapCopy = new ArrayKeyedMap(solutionMap);
+    //         solutionMapCopy.set(mostRecentSolution[0], mostRecentSolution[1]);
+    //         setSolutionMap(solutionMapCopy);
 
-            setInput([]);
-            setHoverInput(-1);
-        }
-    }
+    //         setInput([]);
+    //         setHoverInput(-1);
+    //     }
+    // }
 
-    const terminal1 = (
-        <div className="terminal-input">
-            <strong>Terminal 1</strong> - {getHoverString(0, false)}{" "}
-            {getHoverString(1, true)}
-        </div>
-    );
-    const terminal2 = (
-        <div className="terminal-input">
-            <strong>Terminal 2</strong> - {getHoverString(2, false)}{" "}
-            {getHoverString(3, true)}
-        </div>
-    );
+    // const terminal1 = (
+    //     <div className="terminal-input">
+    //         <strong>Terminal 1</strong> - {getHoverString(0, false)}{" "}
+    //         {getHoverString(1, true)}
+    //     </div>
+    // );
+    // const terminal2 = (
+    //     <div className="terminal-input">
+    //         <strong>Terminal 2</strong> - {getHoverString(2, false)}{" "}
+    //         {getHoverString(3, true)}
+    //     </div>
+    // );
 
-    const progress = (
-        <div>
-            <strong>Progress:</strong> {solved} / {numberOfSolutions}
-        </div>
-    );
+    // const progress = (
+    //     <div>
+    //         <strong>Progress:</strong> {solved} / {numberOfSolutions}
+    //     </div>
+    // );
 
     // let terminalNumber = 1;
     // if (input.length >= 2) {
@@ -210,13 +210,13 @@ function App() {
     // }
     // const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
 
-    const solutionList = solutions
-        .map((solution, index) => (
-            <li key={solution[1]}>
-                <strong>{index + 1}.</strong> {solution[1]}
-            </li>
-        ))
-        .reverse();
+    // const solutionList = solutions
+    //     .map((solution, index) => (
+    //         <li key={solution[1]}>
+    //             <strong>{index + 1}.</strong> {solution[1]}
+    //         </li>
+    //     ))
+    //     .reverse();
 
     return (
         <div className="app">
