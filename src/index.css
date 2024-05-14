@@ -445,6 +445,12 @@ iframe {
   max-width: 320px;
 }
 
+img {
+  display: block;
+  margin: 1em auto;
+  max-width: 600px;
+}
+
 @media only screen and (min-width: 480px) {
   .how-to-guide {
     max-width: 480px;

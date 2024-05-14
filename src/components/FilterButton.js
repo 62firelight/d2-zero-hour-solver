@@ -1,11 +1,21 @@
 import React from "react";
 
+const BUTTON_NAMES = new Map([
+    ["Void", "1"],
+    ["Solar", "2"],
+    ["Arc", "3"],
+]);
+
 function FilterButton(props) {
     // const buttonName = props.isPressed ? (
     //     <strong>{props.element}</strong>
     // ) : (
     //     <div>{props.element}</div>
     // );
+
+    function getButtonName(element) {
+        return BUTTON_NAMES.get(element);
+    }
     
     return (
         <button
@@ -18,7 +28,9 @@ function FilterButton(props) {
             }}
             title={props.element}
             onClick={() => props.toggleElement(props.element)}
+            disabled={props.element !== "Void"}
         >
+        <strong>{getButtonName(props.element)}</strong>
         </button>
     );
 }
