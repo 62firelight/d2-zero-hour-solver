@@ -263,6 +263,17 @@ function App() {
                 </a>
                 )
             </p>
+            <p className="credit">
+                Credit to /u/floory565 for creating the spreadsheet that this solver's solutions are based on (
+                <a
+                    href="https://www.reddit.com/r/raidsecrets/comments/boryo5/heres_a_compact_and_concise_zero_hour_puzzle/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Link
+                </a>
+                )
+            </p>
             <hr />
             <h2>Vault Route</h2>
             <img
