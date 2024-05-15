@@ -1,36 +1,30 @@
 import React from "react";
 
 const BUTTON_NAMES = new Map([
-    ["Void", "1"],
-    ["Solar", "2"],
-    ["Arc", "3"],
+    ["Week 1", "1"],
+    ["Week 2", "2"],
+    ["Week 3", "3"],
 ]);
 
 function FilterButton(props) {
-    // const buttonName = props.isPressed ? (
-    //     <strong>{props.element}</strong>
-    // ) : (
-    //     <div>{props.element}</div>
-    // );
-
-    function getButtonName(element) {
-        return BUTTON_NAMES.get(element);
+    function getButtonName(week) {
+        return BUTTON_NAMES.get(week);
     }
     
     return (
         <button
             className="filter-button"
             style={{
-                backgroundColor: props.getElementColor(props.element),
+                backgroundColor: props.getWeekColor(props.week),
                 border: props.isPressed
                     ? `8px solid ${props.getBorderColor()}`
                     : "8px solid transparent",
             }}
-            title={props.element}
-            onClick={() => props.toggleElement(props.element)}
-            disabled={props.element !== "Void"}
+            title={props.week}
+            onClick={() => props.toggleElement(props.week)}
+            disabled={props.week !== "Week 1"}
         >
-        <strong>{getButtonName(props.element)}</strong>
+        <strong>{getButtonName(props.week)}</strong>
         </button>
     );
 }

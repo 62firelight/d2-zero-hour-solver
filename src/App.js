@@ -10,116 +10,35 @@ import FILTER_MAP from "./components/FILTER_MAP";
 // import RoomMap from "./components/RoomMap";
 
 const ELEMENTS = Object.keys(FILTER_MAP);
-const ELEMENT_NAMES = new Map([
-    ["Void", "Week 1"],
-    ["Solar", "Week 2"],
-    ["Arc", "Week 3"],
+const WEEK_NAMES = new Map([
+    ["Week 1", "Week 1"],
+    ["Week 2", "Week 2"],
+    ["Week 3", "Week 3"],
 ]);
-const ELEMENT_COLORS = new Map([
-    ["Void", "fuchsia"],
-    ["Solar", "orange"],
-    ["Arc", "lightblue"],
+const WEEK_COLORS = new Map([
+    ["Week 1", "fuchsia"],
+    ["Week 2", "orange"],
+    ["Week 3", "lightblue"],
 ]);
 const BORDER_COLORS = new Map([
-    ["Void", "purple"],
-    ["Solar", "rgb(121, 79, 0)"],
-    ["Arc", "rgb(36, 99, 119)"],
+    ["Week 1", "purple"],
+    ["Week 2", "rgb(121, 79, 0)"],
+    ["Week 3", "rgb(36, 99, 119)"],
 ]);
 
 function App() {
-    const [element] = useState("Void");
-    // const [solutionMap, setSolutionMap] = useState(NODE_MAP.get(element));
-    // const [solutions, setSolutions] = useState([]);
-    // const [input, setInput] = useState([]);
-    // const [hoverInput, setHoverInput] = useState(-1);
+    const [week] = useState("Week 1")
 
-    // const solved = NODE_MAP.get(element).size - solutionMap.size;
-    // const numberOfSolutions = NODE_MAP.get(element).size;
-
-    // const disabled = useMemo(() => {
-    //     const nodeKeys = [...solutionMap.keys()];
-    //     let newDisabled = [];
-    //     for (let i = 1; i < 13; i++) {
-    //         // Make a copy of input
-    //         const newInput = input.slice(0);
-
-    //         // Add on a new number to check potential outcomes
-    //         newInput.push(i);
-
-    //         // Check which inputs should not be disabled
-    //         const shouldNotBeDisabled = nodeKeys.some((key) => {
-    //             // Make a copy of the first X elements of the key
-    //             // where X is the length of newInput
-    //             const keyCopy = key.slice(0, newInput.length);
-
-    //             // Check if the key starts with exactly the same elements
-    //             // as newInput
-    //             const startsWith = keyCopy.every((element, index) => {
-    //                 return element === parseInt(newInput[index]);
-    //             });
-
-    //             // Check that newInput is not longer than the key
-    //             const notLongerThanKey = newInput.length <= key.length;
-    //             return startsWith && notLongerThanKey;
-    //         });
-
-    //         // console.log(newInput, shouldNotBeDisabled);
-
-    //         if (!shouldNotBeDisabled) {
-    //             newDisabled.push(i);
-    //         }
-    //     }
-    //     return newDisabled;
-    // }, [input, solutionMap]);
-
-    // Show solution
-    // if (disabled.length === 12 && solved < numberOfSolutions) {
-    //     const newSolution = [input, solutionMap.get(input)];
-    //     setSolutions([...solutions, newSolution]);
-
-    //     const solutionMapCopy = new ArrayKeyedMap(solutionMap);
-    //     solutionMapCopy.delete(input);
-    //     setSolutionMap(solutionMapCopy);
-
-    //     setInput([]);
-    //     setHoverInput(-1);
-    // }
-
-    // function toggleElement(element) {
-    //     if (solved > 0) {
-    //         const userConfirm = window.confirm(
-    //             "Are you sure that you want to reset your progress?"
-    //         );
-
-    //         if (!userConfirm) {
-    //             return;
-    //         }
-    //     }
-
-    //     setElement(element);
-    //     const newSolutionMap = NODE_MAP.get(element);
-    //     setSolutionMap(newSolutionMap);
-
-    //     setSolutions([]);
-
-    //     setInput([]);
-    //     setHoverInput(-1);
-    // }
-
-    // function setTerminalInput(terminalInput) {
-    //     setInput([...input, terminalInput]);
-    // }
-
-    function getElementName(element) {
-        return ELEMENT_NAMES.get(element);
+    function getWeekName(week) {
+        return WEEK_NAMES.get(week);
     }
 
-    function getElementColor(element) {
-        return ELEMENT_COLORS.get(element);
+    function getWeekColor(week) {
+        return WEEK_COLORS.get(week);
     }
 
     function getBorderColor() {
-        let color = BORDER_COLORS.get(element);
+        let color = BORDER_COLORS.get(week);
 
         if (color === undefined) {
             return "black";
@@ -132,167 +51,31 @@ function App() {
         return (
             <FilterButton
                 key={name}
-                element={name}
-                isPressed={name === element}
+                week={name}
+                isPressed={name === week}
                 // toggleElement={toggleElement}
-                getElementColor={getElementColor}
+                getWeekColor={getWeekColor}
                 getBorderColor={getBorderColor}
             />
         );
     });
 
-    // function getHoverString(index, end) {
-    //     let assignedHoverInput =
-    //         input.length === index &&
-    //         hoverInput !== -1 &&
-    //         !disabled.includes(hoverInput)
-    //             ? hoverInput.toString()
-    //             : "?";
-
-    //     let hoverString = input[index]
-    //         ? input[index].toString()
-    //         : assignedHoverInput;
-
-    //     hoverString = (
-    //         <div className="terminal-individual-input">
-    //             <div
-    //                 className={
-    //                     input.length === index ? "highlight" : "no-highlight"
-    //                 }
-    //             >
-    //                 {hoverString.length > 0 && end ? "Right: " : "Left: "}{" "}
-    //                 {hoverString}
-    //             </div>
-    //         </div>
-    //     );
-
-    //     return hoverString;
-    // }
-
-    // function undo() {
-    //     const mostRecentSolution = solutions.pop();
-
-    //     if (mostRecentSolution) {
-    //         const solutionMapCopy = new ArrayKeyedMap(solutionMap);
-    //         solutionMapCopy.set(mostRecentSolution[0], mostRecentSolution[1]);
-    //         setSolutionMap(solutionMapCopy);
-
-    //         setInput([]);
-    //         setHoverInput(-1);
-    //     }
-    // }
-
-    // const terminal1 = (
-    //     <div className="terminal-input">
-    //         <strong>Terminal 1</strong> - {getHoverString(0, false)}{" "}
-    //         {getHoverString(1, true)}
-    //     </div>
-    // );
-    // const terminal2 = (
-    //     <div className="terminal-input">
-    //         <strong>Terminal 2</strong> - {getHoverString(2, false)}{" "}
-    //         {getHoverString(3, true)}
-    //     </div>
-    // );
-
-    // const progress = (
-    //     <div>
-    //         <strong>Progress:</strong> {solved} / {numberOfSolutions}
-    //     </div>
-    // );
-
-    // let terminalNumber = 1;
-    // if (input.length >= 2) {
-    //     terminalNumber = 2;
-    // }
-    // if (input.length >= 4) {
-    //     terminalNumber = 3;
-    // }
-    // const inputSide = (input.length + 1) % 2 === 0 ? "Right" : "Left";
-
-    // const solutionList = solutions
-    //     .map((solution, index) => (
-    //         <li key={solution[1]}>
-    //             <strong>{index + 1}.</strong> {solution[1]}
-    //         </li>
-    //     ))
-    //     .reverse();
-
     return (
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
-            <h2>{getElementName(element)}</h2>
+            <h2>{week}</h2>
             <div className="filter-buttons">{filterList}</div>
-            {/* <RoomMap solutions={solutions} />
-            {solved >= numberOfSolutions ? (
-                <ReactConfetti
-                    width={window.innerWidth}
-                    height={window.innerHeight}
-                />
-            ) : (
-                ""
-            )}
-            <div className="terminal-info">
-                <div className="terminal-inputs">
-                    {terminal1}
-                    {terminal2}
-                </div>
-            </div>
-            <button
-                className="clear-inputs"
-                disabled={input.length <= 0}
-                onClick={() => setInput([])}
-            >
-                Clear Terminals
-            </button>
-            <TerminalButtons
-                disabled={disabled}
-                setTerminalInput={setTerminalInput}
-                setHoverInput={setHoverInput}
-                progress={progress}
-                element={element}
-                toggleElement={toggleElement}
-                undo={undo}
-            />
-            <h2>History</h2>
-            <ul className="history">
-                {solutionList.length > 0 ? solutionList : "<empty>"}
-            </ul>
-            <p className="credit">
-                Credit to /u/pastuleo23 for creating the wheel image (
-                <a
-                    href="https://www.reddit.com/r/raidsecrets/comments/bmi7fv/void_configuration_solution_solver_mobile_support/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Link
-                </a>
-                )
-            </p>
-            <p className="credit">
-                Credit to /u/floory565 for creating the spreadsheet that this
-                solver's solutions are based on (
-                <a
-                    href="https://www.reddit.com/r/raidsecrets/comments/boryo5/heres_a_compact_and_concise_zero_hour_puzzle/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Link
-                </a>
-                )
-            </p> 
-            <hr /> */}
             <h2>Vault Route</h2>
             <h3>Normal</h3>
             <img
                 className="route-map"
-                src={FILTER_MAP[element]}
+                src="VaultRouteNormalWeek1.png"
                 alt="route map"
             />
             <p className="credit">
-                Credit to /u/KPA for designing this route map (
+                Credit to /u/ImawhaleCR for creating this route map (
                 <a
-                    href="https://www.reddit.com/r/DestinyTheGame/comments/brdehh/fire_room_solutions_solar_arc_void_configurations/"
+                    href="https://www.reddit.com/r/raidsecrets/comments/1crz7ts/zero_hour_floor_puzzle/l41hnu3/"
                     target="_blank"
                     rel="noreferrer"
                 >
@@ -301,9 +84,13 @@ function App() {
                 )
             </p>
             <h3>Legend</h3>
-            <img src="VaultRouteLegend.png" alt="Vault route on Legend" />
+            <img
+                className="route-map"
+                src="VaultRouteLegendWeek1.png"
+                alt="Vault route on Legend"
+            />
             <p className="credit">
-                Credit to /u/Mellartach_55270 for designing this route map (
+                Credit to /u/Mellartach_55270 for creating this route map (
                 <a
                     href="https://www.reddit.com/r/raidsecrets/comments/1crz7ts/zero_hour_floor_puzzle/l41qraq/"
                     target="_blank"
@@ -337,10 +124,6 @@ function App() {
             ></iframe>
             <hr />
             <h2>Vault Puzzle</h2>
-            <img
-                src="VaultPuzzleSolutionsWeek1.png"
-                alt="Puzzle room solutions"
-            />
             <iframe
                 width="560"
                 height="315"
@@ -351,12 +134,20 @@ function App() {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
             ></iframe>
+            <img
+                src="VaultPuzzleSolutionsWeek1.png"
+                alt="Puzzle room solutions"
+            />
+            <img
+                src="VaultPuzzleSolutionsWeek1Example.png"
+                alt="Example of a solution for week 1"
+            />
             <h3>How It Works</h3>
             <div className="how-to-guide">
                 <p>
-                    You will need to get a keypad and shoot 3 symbols with
-                    Outbreak Perfected equipped before you can do the vault
-                    puzzle. See the video guide above on where to find these.
+                    You will need to shoot 3 symbols with Outbreak Perfected
+                    equipped before you can do the vault puzzle. See the video
+                    guide above on where to find these.
                 </p>
                 <p>
                     There is a screen visible on the left when you enter the
@@ -396,17 +187,13 @@ function App() {
                 </p>
                 <p>
                     Repeat this process until you get the reward for the vault
-                    puzzle. The solutions may be randomized (not 100% sure), but
-                    you can always follow this process to determine the solution
+                    puzzle.
                 </p>
                 <p>
-                    Below is an example of what the solution might look like,
-                    along with the order of the terminals to activate.
+                    The second image above is an example of what the solution
+                    might look like, along with the order of the terminals to
+                    activate.
                 </p>
-                <img
-                    src="VaultPuzzleSolutionsWeek1Example.png"
-                    alt="Example of a solution for week 1"
-                />
             </div>
             <hr />
             <p className="alert">
@@ -427,9 +214,7 @@ function App() {
             >
                 GitHub
             </a>
-            {/* <br /> */}
             <hr />
-            {/* <Guide element={element} getBorderColor={getBorderColor} /> */}
         </div>
     );
 }
