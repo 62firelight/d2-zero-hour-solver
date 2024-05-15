@@ -9,12 +9,8 @@ import FILTER_MAP from "./components/FILTER_MAP";
 // import ReactConfetti from "react-confetti";
 // import RoomMap from "./components/RoomMap";
 
-const ELEMENTS = Object.keys(FILTER_MAP);
-const WEEK_NAMES = new Map([
-    ["Week 1", "Week 1"],
-    ["Week 2", "Week 2"],
-    ["Week 3", "Week 3"],
-]);
+const WEEKS = Object.keys(FILTER_MAP);
+
 const WEEK_COLORS = new Map([
     ["Week 1", "fuchsia"],
     ["Week 2", "orange"],
@@ -29,9 +25,9 @@ const BORDER_COLORS = new Map([
 function App() {
     const [week] = useState("Week 1")
 
-    function getWeekName(week) {
-        return WEEK_NAMES.get(week);
-    }
+    // function getWeekName(week) {
+    //     return WEEK_NAMES.get(week);
+    // }
 
     function getWeekColor(week) {
         return WEEK_COLORS.get(week);
@@ -47,7 +43,7 @@ function App() {
         return color;
     }
 
-    const filterList = ELEMENTS.map((name) => {
+    const filterList = WEEKS.map((name) => {
         return (
             <FilterButton
                 key={name}
