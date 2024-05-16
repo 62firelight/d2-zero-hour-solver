@@ -14,14 +14,14 @@ function FilterButton(props) {
     return (
         <button
             className="filter-button"
-            style={{
-                backgroundColor: props.getWeekColor(props.week),
-                border: props.isPressed
-                    ? `8px solid ${props.getBorderColor()}`
-                    : "8px solid transparent",
-            }}
+            // style={{
+            //     backgroundColor: props.getWeekColor(props.week),
+            //     border: props.isPressed
+            //         ? `8px solid ${props.getBorderColor()}`
+            //         : "8px solid transparent",
+            // }}
             title={props.week}
-            onClick={() => props.toggleElement(props.week)}
+            // onClick={() => props.toggleElement(props.week)}
             disabled={props.week !== "Week 1"}
         >
         <strong>{getButtonName(props.week)}</strong>

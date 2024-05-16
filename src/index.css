@@ -210,7 +210,9 @@ table {
 }
 
 .route-map {
-  max-width: 100%;
+  max-width: 480px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .terminal-info {

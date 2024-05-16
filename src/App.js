@@ -6,35 +6,47 @@ import { useState } from "react";
 // import ArrayKeyedMap from "array-keyed-map";
 // import NODE_MAP from "./components/NODE_MAP";
 import FILTER_MAP from "./components/FILTER_MAP";
+import Credit from "./components/Credit";
 // import ReactConfetti from "react-confetti";
 // import RoomMap from "./components/RoomMap";
 
 const WEEKS = Object.keys(FILTER_MAP);
 
-const WEEK_COLORS = new Map([
-    ["Week 1", "fuchsia"],
-    ["Week 2", "orange"],
-    ["Week 3", "lightblue"],
+const THREATS = ["Arc", "Void", "Solar"];
+
+const THREAT_COLORS = new Map([
+    ["Void", "fuchsia"],
+    ["Solar", "orange"],
+    ["Arc", "lightblue"],
 ]);
 const BORDER_COLORS = new Map([
-    ["Week 1", "purple"],
-    ["Week 2", "rgb(121, 79, 0)"],
-    ["Week 3", "rgb(36, 99, 119)"],
+    ["Void", "purple"],
+    ["Solar", "rgb(121, 79, 0)"],
+    ["Arc", "rgb(36, 99, 119)"],
 ]);
 
 function App() {
-    const [week] = useState("Week 1")
+    const [week] = useState("Week 1");
+    const [currentThreat, setThreat] = useState("Arc");
 
     // function getWeekName(week) {
     //     return WEEK_NAMES.get(week);
     // }
 
-    function getWeekColor(week) {
-        return WEEK_COLORS.get(week);
+    const firstDate = new Date(Date.UTC(1024, 5, 14, 17)); 
+    const secondDate = new Date(Date.now()); // today, 14th May, 2022
+    //console.log(secondDate);
+
+    // const millisecondsDiff = secondDate.getTime() - firstDate.getTime();
+
+    // const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 60));
+
+    function getThreatColor(currentThreat) {
+        return THREAT_COLORS.get(currentThreat);
     }
 
     function getBorderColor() {
-        let color = BORDER_COLORS.get(week);
+        let color = BORDER_COLORS.get(currentThreat);
 
         if (color === undefined) {
             return "black";
@@ -50,9 +62,29 @@ function App() {
                 week={name}
                 isPressed={name === week}
                 // toggleElement={toggleElement}
-                getWeekColor={getWeekColor}
+                // getWeekColor={getWeekColor}
                 getBorderColor={getBorderColor}
             />
+        );
+    });
+
+    const threatFilters = THREATS.map((threat) => {
+        return (
+            <button
+                key={threat}
+                className="filter-button"
+                style={{
+                    backgroundColor: getThreatColor(threat),
+                    border:
+                        currentThreat === threat
+                            ? `8px solid ${getBorderColor(threat)}`
+                            : "8px solid transparent",
+                }}
+                onClick={() => setThreat(threat)}
+                disabled={threat === "Solar"}
+            >
+                {threat}
+            </button>
         );
     });
 
@@ -62,40 +94,17 @@ function App() {
             <h2>{week}</h2>
             <div className="filter-buttons">{filterList}</div>
             <h2>Vault Route</h2>
-            <h3>Normal</h3>
+            <h3>Current Threat: {currentThreat}</h3>
+            <div className="filter-buttons">{threatFilters}</div>
             <img
                 className="route-map"
-                src="VaultRouteNormalWeek1.png"
+                src={`VaultRoute${currentThreat}Threat.png`}
                 alt="route map"
             />
-            <p className="credit">
-                Credit to /u/ImawhaleCR for creating this route map (
-                <a
-                    href="https://www.reddit.com/r/raidsecrets/comments/1crz7ts/zero_hour_floor_puzzle/l41hnu3/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Link
-                </a>
-                )
-            </p>
-            <h3>Legend</h3>
-            <img
-                className="route-map"
-                src="VaultRouteLegendWeek1.png"
-                alt="Vault route on Legend"
+            <Credit
+                username="/u/isurvivorz"
+                link="https://www.reddit.com/r/raidsecrets/comments/1ct6ah1/zero_hour_fire_room_paths/"
             />
-            <p className="credit">
-                Credit to /u/Mellartach_55270 for creating this route map (
-                <a
-                    href="https://www.reddit.com/r/raidsecrets/comments/1crz7ts/zero_hour_floor_puzzle/l41qraq/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Link
-                </a>
-                )
-            </p>
             <iframe
                 width="560"
                 height="315"
