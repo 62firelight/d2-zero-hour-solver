@@ -450,7 +450,11 @@ iframe {
 img {
   display: block;
   margin: 1em auto;
-  max-width: 600px;
+  max-width: 480px;
+}
+
+.route-map {
+  max-width: 320px;
 }
 
 @media only screen and (min-width: 480px) {
