@@ -25,6 +25,12 @@ const BORDER_COLORS = new Map([
     ["Arc", "rgb(36, 99, 119)"],
 ]);
 
+const ROUTE_VIDEOS = new Map([
+    ["Void", ""],
+    ["Solar", "https://www.youtube.com/embed/zPW_btgckaQ?si=rrOzePGHn9ikbhep"],
+    ["Arc", "https://www.youtube.com/embed/pCDbZmsgn3Q?si=du3WbC9TvbqvSacI"],
+]);
+
 function App() {
     const [week] = useState("Week 1");
     const [currentThreat, setThreat] = useState("Arc");
@@ -73,46 +79,62 @@ function App() {
                             : "8px solid transparent",
                 }}
                 onClick={() => setThreat(threat)}
-                disabled={threat === "Solar"}
             >
                 {threat}
             </button>
         );
     });
 
+    function getRouteVideoUrl(threat) {
+        return ROUTE_VIDEOS.get(threat);
+    }
+
+    const routeVideo = getRouteVideoUrl(currentThreat) ? (
+        <iframe
+            width="560"
+            height="315"
+            src={getRouteVideoUrl(currentThreat)}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+    ) : undefined;
+
     return (
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
             <h2>{week}</h2>
             <div className="filter-buttons">{filterList}</div>
-            <h2>Vault Route</h2>
-            <h3>Current Threat: {currentThreat}</h3>
+            <h2>Fire Room Route</h2>
+            <h3>Showing routes for {currentThreat} Threat</h3>
+            <br></br>
             <div className="filter-buttons">{threatFilters}</div>
+            <h3>Normal</h3>
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatNormal.png`}
-                alt="route map"
+                alt="Route map for Normal"
             />
-
-<img
+            <h3>Legend</h3>
+            <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatLegend.png`}
-                alt="route map"
+                alt="Route map for Legend"
             />
-            <Credit
-                username="/u/isurvivorz"
-                link="https://www.reddit.com/r/raidsecrets/comments/1ct6ah1/zero_hour_fire_room_paths/"
-            />
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/pCDbZmsgn3Q?si=ZOn4YDVWkTKAX98M"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
+            {currentThreat !== "Solar" ? (
+                <Credit
+                    username="/u/isurvivorz"
+                    link="https://www.reddit.com/r/raidsecrets/comments/1ct6ah1/zero_hour_fire_room_paths/"
+                />
+            ) : (
+                <Credit
+                    username="Esoterickk"
+                    link="https://www.youtube.com/watch?v=zPW_btgckaQ"
+                />
+            )}
+            {routeVideo}
             <hr />
             <h2>Switches (Outbreak Refined Quest)</h2>
             <iframe
