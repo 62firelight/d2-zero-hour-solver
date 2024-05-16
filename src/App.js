@@ -33,8 +33,8 @@ function App() {
     //     return WEEK_NAMES.get(week);
     // }
 
-    const firstDate = new Date(Date.UTC(1024, 5, 14, 17)); 
-    const secondDate = new Date(Date.now()); // today, 14th May, 2022
+    //const firstDate = new Date(Date.UTC(1024, 5, 14, 17)); 
+    //const secondDate = new Date(Date.now()); // today, 14th May, 2022
     //console.log(secondDate);
 
     // const millisecondsDiff = secondDate.getTime() - firstDate.getTime();
