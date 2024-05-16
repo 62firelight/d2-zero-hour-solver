@@ -33,25 +33,6 @@ function App() {
     //     return WEEK_NAMES.get(week);
     // }
 
-    const firstDate = new Date(Date.UTC(1024, 5, 14, 17));
-    const now = new Date(); // today
-    const secondDate = new Date(
-        Date.UTC(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDay(),
-            now.getHours(),
-            now.getMinutes(),
-            now.getSeconds(),
-            now.getMilliseconds()
-        )
-    );
-    console.log(":D " + secondDate);
-
-    // const millisecondsDiff = secondDate.getTime() - firstDate.getTime();
-
-    // const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 60));
-
     function getThreatColor(currentThreat) {
         return THREAT_COLORS.get(currentThreat);
     }
