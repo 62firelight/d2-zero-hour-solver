@@ -111,29 +111,22 @@ function App() {
             <h3>Showing routes for {currentThreat} Threat</h3>
             <br></br>
             <div className="filter-buttons">{threatFilters}</div>
-            <h3>Normal</h3>
+            {/* <h3>Normal</h3> */}
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatNormal.png`}
                 alt="Route map for Normal"
             />
-            <h3>Legend</h3>
+            {/* <h3>Legend</h3> */}
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatLegend.png`}
                 alt="Route map for Legend"
             />
-            {currentThreat !== "Solar" ? (
-                <Credit
-                    username="/u/isurvivorz"
-                    link="https://www.reddit.com/r/raidsecrets/comments/1ct6ah1/zero_hour_fire_room_paths/"
-                />
-            ) : (
-                <Credit
-                    username="Esoterickk"
-                    link="https://www.youtube.com/watch?v=zPW_btgckaQ"
-                />
-            )}
+            <Credit
+                username="/u/isurvivorz"
+                link="https://www.reddit.com/r/raidsecrets/comments/1ct6ah1/zero_hour_fire_room_paths/"
+            />
             {routeVideo}
             <hr />
             <h2>Switches (Outbreak Refined Quest)</h2>
