@@ -108,16 +108,14 @@ function App() {
             <h2>{week}</h2>
             <div className="filter-buttons">{filterList}</div>
             <h2>Fire Room Route</h2>
-            <h3>Showing routes for {currentThreat} Threat</h3>
             <br></br>
             <div className="filter-buttons">{threatFilters}</div>
-            {/* <h3>Normal</h3> */}
+            <h3>Showing routes for {currentThreat} Threat</h3>
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatNormal.png`}
                 alt="Route map for Normal"
             />
-            {/* <h3>Legend</h3> */}
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatLegend.png`}
