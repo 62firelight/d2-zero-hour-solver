@@ -26,9 +26,15 @@ const BORDER_COLORS = new Map([
 ]);
 
 const ROUTE_VIDEOS = new Map([
-    ["Void", ""],
-    ["Solar", "https://www.youtube.com/embed/zPW_btgckaQ?si=rrOzePGHn9ikbhep"],
-    ["Arc", "https://www.youtube.com/embed/pCDbZmsgn3Q?si=du3WbC9TvbqvSacI"],
+    ["Void", "https://www.youtube.com/embed/tQ-fo2ZLmX8?si=4CZzRy6Oxvrl1dFS"],
+    [
+        "Solar",
+        "https://www.youtube.com/embed/tQ-fo2ZLmX8?si=lII-ZppU9ewQxNgS&amp;start=38",
+    ],
+    [
+        "Arc",
+        "https://www.youtube.com/embed/tQ-fo2ZLmX8?si=RTutFKfdChorC_S2&amp;start=74",
+    ],
 ]);
 
 function App() {
@@ -105,12 +111,10 @@ function App() {
     return (
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
-            <h2>{week}</h2>
-            <div className="filter-buttons">{filterList}</div>
             <h2>Fire Room Route</h2>
-            <br></br>
             <div className="filter-buttons">{threatFilters}</div>
             <h3>Showing routes for {currentThreat} Threat</h3>
+            <p>(click on buttons above to change displayed routes)</p>
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatNormal.png`}
@@ -127,19 +131,10 @@ function App() {
             />
             {routeVideo}
             <hr />
-            <h2>Switches (Outbreak Refined Quest)</h2>
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/jo7LYrzY2uU?si=GzAgUETW5LRBKH57"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
-            <hr />
             <h2>Vault Puzzle</h2>
+            <div className="filter-buttons">{filterList}</div>
+            <h3>Showing solution for {week}</h3>
+            <p>(click on buttons above to change the weekly solution)</p>
             <iframe
                 width="560"
                 height="315"
@@ -153,10 +148,12 @@ function App() {
             <img
                 src="VaultPuzzleSolutionsWeek1.png"
                 alt="Puzzle room solutions"
+                className="how-to-guide"
             />
             <img
                 src="VaultPuzzleSolutionsWeek1Example.png"
                 alt="Example of a solution for week 1"
+                className="how-to-guide"
             />
             <h3>How It Works</h3>
             <div className="how-to-guide">
@@ -212,16 +209,27 @@ function App() {
                 </p>
             </div>
             <hr />
-            <p className="alert">
-                <strong>PLEASE READ:</strong> <br></br>
-                This website is in the middle of an overhaul. The new version of{" "}
-                <br></br>
-                Zero Hour does not feature the same puzzle so the original
-                solver and <br></br>
-                guide are outdated. The vault route should be up to date (at{" "}
-                <br></br>
-                least for the normal version).
-            </p>
+            <h2>Switches (Outbreak Refined Quest)</h2>
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/jo7LYrzY2uU?si=GzAgUETW5LRBKH57"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+            ></iframe>
+            <hr />
+            <div className="how-to-guide">
+                <p className="alert">
+                    <h3>PLEASE READ:</h3>
+                    This website is in the middle of an overhaul. Solutions are
+                    still being discovered for the new version of Zero Hour. I
+                    will try to update the website to include the new solutions
+                    within 24 hours of the weekly reset.
+                </p>
+            </div>
             Created by 62firelight
             <a
                 href="https://github.com/62firelight/d2-zero-hour-solver"
@@ -230,7 +238,8 @@ function App() {
             >
                 GitHub
             </a>
-            <hr />
+            <br></br>
+            <br></br>
         </div>
     );
 }

@@ -16,6 +16,7 @@ code {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  text-align: center;
 }
 
 .filter-buttons {
@@ -25,7 +26,7 @@ code {
 .filter-button {
   cursor: pointer;
   border-radius: 25px;
-  margin: 0 0.5em;
+  margin: 0 0.25em;
   padding: 0.45em 1.95em;
 }
 
@@ -290,7 +291,7 @@ hr {
   border: 0;
   clear: both;
   display: block;
-  width: 25%;
+  width: 25em;
   background-color: black;
   height: 1px;
   opacity: 0.5;
@@ -423,17 +424,23 @@ hr {
   text-align: center;
 }
 
-.credit, .alert {
+.credit {
   text-align: center;
 }
 
 .alert {
+  text-align: left;
   color: red;
+}
+
+.alert h4 {
+  margin: 0;
 }
 
 .how-to-guide {
   margin: 0 1em 1em 1em;
   max-width: 320px;
+  text-align: left;
 }
 
 iframe {
@@ -454,10 +461,14 @@ img {
 }
 
 .route-map {
-  max-width: 320px;
+  max-width: 240px;
 }
 
 @media only screen and (min-width: 480px) {
+  .filter-button {
+    margin: 0 0.5em;
+  }
+
   .how-to-guide {
     max-width: 480px;
   }
@@ -469,6 +480,10 @@ img {
   .how-to-guide img {
     max-width: 480px;
   }  
+
+  .route-map {
+    max-width: 320px;
+  }
 }
 
 span[style] {
