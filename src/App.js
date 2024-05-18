@@ -1,5 +1,5 @@
 import "./App.css";
-import FilterButton from "./components/FilterButton";
+// import FilterButton from "./components/FilterButton";
 import { useState } from "react";
 // import TerminalButtons from "./components/TerminalButtons";
 // import Guide from "./components/Guide";
@@ -38,12 +38,8 @@ const ROUTE_VIDEOS = new Map([
 ]);
 
 function App() {
-    const [week] = useState("Week 1");
+    const [currentWeek, setWeek] = useState("Week 1");
     const [currentThreat, setThreat] = useState("Arc");
-
-    // function getWeekName(week) {
-    //     return WEEK_NAMES.get(week);
-    // }
 
     function getThreatColor(currentThreat) {
         return THREAT_COLORS.get(currentThreat);
@@ -59,16 +55,21 @@ function App() {
         return color;
     }
 
-    const filterList = WEEKS.map((name) => {
+    const filterList = WEEKS.map((week) => {
         return (
-            <FilterButton
-                key={name}
-                week={name}
-                isPressed={name === week}
-                // toggleElement={toggleElement}
-                // getWeekColor={getWeekColor}
-                getBorderColor={getBorderColor}
-            />
+            <button
+                key={week}
+                className="filter-button"
+                onClick={() => setWeek(week)}
+                style={{
+                    border:
+                        currentWeek === week
+                            ? `4px solid black`
+                            : "1px solid black",
+                }}
+            >
+                {week}
+            </button>
         );
     });
 
@@ -108,6 +109,89 @@ function App() {
         ></iframe>
     ) : undefined;
 
+    function getSolutionsLocation(week) {
+        switch (week) {
+            case "Week 1":
+                return (
+                    <p>
+                        For Week 1, the solutions will be below the{" "}
+                        <strong>Square</strong> shape on the screen (in other
+                        words, the first column), and the room on the
+                        bottom-left of the map will contain the solutions.
+                    </p>
+                );
+            case "Week 2":
+                return (
+                    <p>
+                        For Week 2, the solutions will be below the{" "}
+                        <strong>Diamond</strong> shape on the screen (in other
+                        words, the second column), and the room below the
+                        "OFFLINE" room on the top-left of the map will contain
+                        the solutions.
+                    </p>
+                );
+            case "Week 3":
+                return (
+                    <p>
+                        For Week 3, the solutions will be below the sideways{" "}
+                        <strong>Trapezium</strong> shape on the screen (in other
+                        words, the third column), and the only room on the
+                        right-side of the map that isn't marked with "ERROR" or
+                        "OFFLINE" will contain the solutions.
+                    </p>
+                );
+            default:
+                return undefined;
+        }
+    }
+
+    function getExamples(week) {
+        switch (week) {
+            case "Week 1":
+                return (
+                    <div>
+                        <p>
+                            For example, the first arrow points diagonally to
+                            the top-right. Since the arrow is not highlighted in
+                            orange, this arrow will point to the terminal just
+                            to the right of the bottom-left room's entrance.
+                        </p>
+                        <p>
+                            Similarly, the second arrow points diagonally to the
+                            bottom-right. Again, this arrow isn't highlighted in
+                            orange, so the terminal just to the left of the
+                            bottom-left room's entrance will need to be
+                            activated.
+                        </p>
+                        <p>
+                            The third arrow points to the bottom-left. This
+                            arrow is highlighted in orange, so this arrow will
+                            actually point towards the terminal at the
+                            bottom-left in the vault's central room. This
+                            terminal will be to your immediate left when you
+                            enter the vault's central room from the incineration
+                            chamber.
+                        </p>
+                        <p>
+                            Repeat this process until you get the reward for the
+                            vault puzzle.
+                        </p>
+                        <p>
+                            The image above is an example of what the
+                            solution might look like, along with the order of
+                            the terminals to activate.
+                        </p>
+                    </div>
+                );
+            case "Week 2":
+                break;
+            case "Week 3":
+                break;
+            default:
+                return undefined;
+        }
+    }
+
     return (
         <div className="app">
             <h1>Destiny 2 Zero Hour Solver</h1>
@@ -133,30 +217,41 @@ function App() {
             <hr />
             <h2>Vault Puzzle</h2>
             <div className="filter-buttons">{filterList}</div>
-            <h3>Showing solution for {week}</h3>
+            <h3>
+                Showing solution for {currentWeek}{" "}
+                {currentWeek !== "Week 1" ? "(untested)" : ""}
+            </h3>
             <p>(click on buttons above to change the weekly solution)</p>
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/ApciPdFVpUg?si=odbQmahV3zWTu1FB"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
-            <img
-                src="VaultPuzzleSolutionsWeek1.png"
-                alt="Puzzle room solutions"
-                className="how-to-guide"
-            />
-            <img
-                src="VaultPuzzleSolutionsWeek1Example.png"
-                alt="Example of a solution for week 1"
-                className="how-to-guide"
-            />
-            <h3>How It Works</h3>
             <div className="how-to-guide">
+                <h3>Solution</h3>
+                <img
+                    src={`VaultPuzzleMap${currentWeek.replaceAll(" ", "")}.png`}
+                    alt={`Example of a solution for ${currentWeek}`}
+                />
+                <h3>Video Guide ({currentWeek})</h3>
+                {currentWeek !== "Week 1" ? (
+                    <p
+                        className="how-to-guide"
+                        style={{
+                            textAlign: "center",
+                        }}
+                    >
+                        No video guide exists for this week.
+                    </p>
+                ) : (
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/ApciPdFVpUg?si=odbQmahV3zWTu1FB"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                )}
+                <h3>How It Works</h3>
+
                 <p>
                     You will need to shoot 3 symbols with Outbreak Perfected
                     equipped before you can do the vault puzzle. See the video
@@ -168,48 +263,15 @@ function App() {
                     screen will indicate which terminals to activate for the
                     puzzle.
                 </p>
-                <p>
-                    For the first week, the solutions will be below the{" "}
-                    <strong>Square</strong> shape on the screen (in other words,
-                    the first column), and the room at the bottom-left of the
-                    screen will contain the solutions.
-                </p>
+                {getSolutionsLocation(currentWeek)}
                 <p>
                     The arrows point (roughly) in the direction of the terminal
                     to activate if you stand in the center of each room.
                 </p>
-                <p>
-                    For example, the first arrow points diagonally to the
-                    top-right. Since the arrow is not highlighted in orange,
-                    this arrow will point to the terminal just to the right of
-                    the bottom-left room's entrance.
-                </p>
-                <p>
-                    Similarly, the second arrow points diagonally to the
-                    bottom-right. Again, this arrow isn't highlighted in orange,
-                    so the terminal just to the left of the bottom-left room's
-                    entrance will need to be activated.
-                </p>
-                <p>
-                    The third arrow points to the bottom-left. This arrow is
-                    highlighted in orange, so this arrow will actually point
-                    towards the terminal at the bottom-left in the vault's
-                    central room. This terminal will be to your immediate left
-                    when you enter the vault's central room from the
-                    incineration chamber.
-                </p>
-                <p>
-                    Repeat this process until you get the reward for the vault
-                    puzzle.
-                </p>
-                <p>
-                    The second image above is an example of what the solution
-                    might look like, along with the order of the terminals to
-                    activate.
-                </p>
+                {getExamples(currentWeek)}
             </div>
             <hr />
-            <h2>Switches (Outbreak Refined Quest)</h2>
+            <h2>Outbreak Refined I Switches</h2>
             <iframe
                 width="560"
                 height="315"
@@ -220,6 +282,24 @@ function App() {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
             ></iframe>
+            <h2>Outbreak Refined II Switches</h2>
+            <p
+                className="how-to-guide"
+                style={{
+                    textAlign: "center",
+                }}
+            >
+                No video guide exists for this quest yet.
+            </p>
+            <h2>Outbreak Refined III Switches</h2>
+            <p
+                className="how-to-guide"
+                style={{
+                    textAlign: "center",
+                }}
+            >
+                No video guide exists for this quest yet.
+            </p>
             <hr />
             <div className="how-to-guide">
                 <p className="alert">
