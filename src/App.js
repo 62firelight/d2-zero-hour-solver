@@ -37,6 +37,12 @@ const ROUTE_VIDEOS = new Map([
     ],
 ]);
 
+const PUZZLE_VIDEOS = new Map([
+    ["Week 1", "https://www.youtube.com/embed/ApciPdFVpUg?si=Z79wd7NUiX1WqjhQ"],
+    ["Week 2", "https://www.youtube.com/embed/W2p41zDNPlE?si=CMGs8xL4ZTerlT9K"],
+    ["Week 3", undefined],
+]);
+
 function App() {
     const [currentWeek, setWeek] = useState("Week 1");
     const [currentThreat, setThreat] = useState("Arc");
@@ -96,6 +102,10 @@ function App() {
         return ROUTE_VIDEOS.get(threat);
     }
 
+    function getPuzzleVideoUrl(week) {
+        return PUZZLE_VIDEOS.get(week);
+    }
+
     const routeVideo = getRouteVideoUrl(currentThreat) ? (
         <iframe
             width="560"
@@ -108,6 +118,28 @@ function App() {
             allowfullscreen
         ></iframe>
     ) : undefined;
+
+    const puzzleVideo = getPuzzleVideoUrl(currentWeek) ? (
+        <iframe
+            width="560"
+            height="315"
+            src={getPuzzleVideoUrl(currentWeek)}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+    ) : (
+        <p
+            className="how-to-guide"
+            style={{
+                textAlign: "center",
+            }}
+        >
+            No video guide exists for this week.
+        </p>
+    );
 
     function getSolutionsLocation(week) {
         switch (week) {
@@ -177,9 +209,9 @@ function App() {
                             vault puzzle.
                         </p>
                         <p>
-                            The image above is an example of what the
-                            solution might look like, along with the order of
-                            the terminals to activate.
+                            The image above is an example of what the solution
+                            might look like, along with the order of the
+                            terminals to activate.
                         </p>
                     </div>
                 );
@@ -219,7 +251,7 @@ function App() {
             <div className="filter-buttons">{filterList}</div>
             <h3>
                 Showing solution for {currentWeek}{" "}
-                {currentWeek !== "Week 1" ? "(untested)" : ""}
+                {currentWeek === "Week 3" ? "(untested)" : ""}
             </h3>
             <p>(click on buttons above to change the weekly solution)</p>
             <div className="how-to-guide">
@@ -229,27 +261,7 @@ function App() {
                     alt={`Example of a solution for ${currentWeek}`}
                 />
                 <h3>Video Guide ({currentWeek})</h3>
-                {currentWeek !== "Week 1" ? (
-                    <p
-                        className="how-to-guide"
-                        style={{
-                            textAlign: "center",
-                        }}
-                    >
-                        No video guide exists for this week.
-                    </p>
-                ) : (
-                    <iframe
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/ApciPdFVpUg?si=odbQmahV3zWTu1FB"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
-                    ></iframe>
-                )}
+                {puzzleVideo}
                 <h3>How It Works</h3>
 
                 <p>
@@ -283,14 +295,16 @@ function App() {
                 allowfullscreen
             ></iframe>
             <h2>Outbreak Refined II Switches</h2>
-            <p
-                className="how-to-guide"
-                style={{
-                    textAlign: "center",
-                }}
-            >
-                No video guide exists for this quest yet.
-            </p>
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/-nlk60SYH1U?si=fFxuGlonU5qIWcY-"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+            ></iframe>
             <h2>Outbreak Refined III Switches</h2>
             <p
                 className="how-to-guide"
