@@ -40,7 +40,7 @@ const ROUTE_VIDEOS = new Map([
 const PUZZLE_VIDEOS = new Map([
     ["Week 1", "https://www.youtube.com/embed/ApciPdFVpUg?si=Z79wd7NUiX1WqjhQ"],
     ["Week 2", "https://www.youtube.com/embed/W2p41zDNPlE?si=CMGs8xL4ZTerlT9K"],
-    ["Week 3", undefined],
+    ["Week 3", "https://www.youtube.com/embed/HGFdKnt6C-Q?si=vQTFWeZsjRr3mhra"],
 ]);
 
 function App() {
@@ -230,7 +230,7 @@ function App() {
             <h2>Fire Room Route</h2>
             <div className="filter-buttons">{threatFilters}</div>
             <h3>Showing routes for {currentThreat} Threat</h3>
-            <p>(click on buttons above to change displayed routes)</p>
+            (click on buttons above to change displayed routes)
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatNormal.png`}
@@ -249,11 +249,8 @@ function App() {
             <hr />
             <h2>Vault Puzzle</h2>
             <div className="filter-buttons">{filterList}</div>
-            <h3>
-                Showing solution for {currentWeek}{" "}
-                {currentWeek === "Week 3" ? "(untested)" : ""}
-            </h3>
-            <p>(click on buttons above to change the weekly solution)</p>
+            <h3>Showing solution for {currentWeek} </h3>
+            (click on buttons above to change the weekly solution)
             <div className="how-to-guide">
                 <h3>Solution</h3>
                 <img
@@ -267,7 +264,7 @@ function App() {
                 <p>
                     You will need to shoot 3 symbols with Outbreak Perfected
                     equipped before you can do the vault puzzle. See the video
-                    guide above on where to find these.
+                    guide above on where to find these symbols.
                 </p>
                 <p>
                     There is a screen visible on the left when you enter the
@@ -306,15 +303,17 @@ function App() {
                 allowfullscreen
             ></iframe>
             <h2>Outbreak Refined III Switches</h2>
-            <p
-                className="how-to-guide"
-                style={{
-                    textAlign: "center",
-                }}
-            >
-                No video guide exists for this quest yet.
-            </p>
-            <hr />
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/2fnH5QoRkeA?si=6bxCHi7ixsK6A5ie"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+            ></iframe>
+            {/* <hr />
             <div className="how-to-guide">
                 <p className="alert">
                     <h3>PLEASE READ:</h3>
@@ -323,7 +322,24 @@ function App() {
                     will try to update the website to include the new solutions
                     within 24 hours of the weekly reset.
                 </p>
-            </div>
+            </div> */}
+            <p>
+                Videos were created by{" "}
+                <a
+                    href="https://www.youtube.com/@Esoterickk"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Esoterickk
+                </a>{" "}
+                and <a
+                    href="https://www.youtube.com/@360GameTV"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    360GameTV
+                </a>.
+            </p>
             Created by 62firelight
             <a
                 href="https://github.com/62firelight/d2-zero-hour-solver"
