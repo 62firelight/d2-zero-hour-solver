@@ -226,7 +226,7 @@ function App() {
 
     return (
         <div className="app">
-            <h1>Destiny 2 Zero Hour Solver</h1>
+            <h1>Zero Hour Solver</h1>
             <h2>Fire Room Route</h2>
             <div className="filter-buttons">{threatFilters}</div>
             <h3>Showing routes for {currentThreat} Threat</h3>
