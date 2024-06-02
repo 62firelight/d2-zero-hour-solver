@@ -230,7 +230,7 @@ function App() {
             <h2>Fire Room Route</h2>
             <div className="filter-buttons">{threatFilters}</div>
             <h3>Showing routes for {currentThreat} Threat</h3>
-            (click on buttons above to change displayed routes)
+            (click buttons above to change routes)
             <img
                 className="route-map"
                 src={`VaultRoute${currentThreat}ThreatNormal.png`}
@@ -250,9 +250,8 @@ function App() {
             <h2>Vault Puzzle</h2>
             <div className="filter-buttons">{filterList}</div>
             <h3>Showing solution for {currentWeek} </h3>
-            (click on buttons above to change the weekly solution)
+            (click buttons above to change solutions)
             <div className="how-to-guide">
-                <h3>Solution</h3>
                 <img
                     src={`VaultPuzzleMap${currentWeek.replaceAll(" ", "")}.png`}
                     alt={`Example of a solution for ${currentWeek}`}
