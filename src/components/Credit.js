@@ -3,11 +3,11 @@ import React from "react";
 function Credit(props) {
     return (
         <p className="credit">
-            Credit to {props.username} for creating this route map (
+            Credit to for{" "}
             <a href={props.link} target="_blank" rel="noreferrer">
-                Link
-            </a>
-            )
+                {props.username}
+            </a>{" "}
+            creating this route map
         </p>
     );
 }
