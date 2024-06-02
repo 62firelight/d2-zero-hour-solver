@@ -313,18 +313,52 @@ function App() {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
             ></iframe>
-            {/* <hr />
-            <div className="how-to-guide">
-                <p className="alert">
-                    <h3>PLEASE READ:</h3>
-                    This website is in the middle of an overhaul. Solutions are
-                    still being discovered for the new version of Zero Hour. I
-                    will try to update the website to include the new solutions
-                    within 24 hours of the weekly reset.
+            <hr />
+            <div className="time-glitch">
+                <h2>Infinite Time Glitch</h2>
+                <p>
+                    The first minute and a half shows how to perform the glitch.
+                    The rest of the video shows a full Zero Hour run using the
+                    glitch.
                 </p>
-            </div> */}
+                <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/HZKgDvrILG4?si=kPqnUP2juR4qT8-t"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p>
+                    Note that doing a vault puzzle with this glitch active will
+                    cause a 60 second timer to appear again. Going to the boss
+                    room will cause the timer to disappear, but you will be sent
+                    back to orbit if you don't make it in time. The source for
+                    this information comes from the comments section for the
+                    video above and{" "}
+                    <a
+                        href="https://www.reddit.com/r/DestinyTheGame/comments/1d64geu/i_made_a_website_that_compiles_everything_you/l6sb5de/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        /u/Makeshift27015
+                    </a>
+                    .
+                </p>
+            </div>
+            <hr />
             <p>
                 Videos were created by{" "}
+                <a
+                    href="https://www.youtube.com/@360GameTV"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    360GameTV
+                </a>{" "}
+                ,{" "}
                 <a
                     href="https://www.youtube.com/@Esoterickk"
                     target="_blank"
@@ -332,13 +366,15 @@ function App() {
                 >
                     Esoterickk
                 </a>{" "}
-                and <a
-                    href="https://www.youtube.com/@360GameTV"
+                and{" "}
+                <a
+                    href="https://www.youtube.com/@CheeseForever"
                     target="_blank"
                     rel="noreferrer"
                 >
-                    360GameTV
-                </a>.
+                    Cheese Forever
+                </a>
+                .
             </p>
             Created by 62firelight
             <a

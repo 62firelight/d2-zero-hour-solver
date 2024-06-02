@@ -437,7 +437,7 @@ hr {
   margin: 0;
 }
 
-.how-to-guide {
+.how-to-guide, .time-glitch {
   margin: 0 1em 1em 1em;
   max-width: 320px;
   text-align: left;
@@ -446,6 +446,10 @@ hr {
 iframe {
   margin: 1em 0 1em 0;
   max-width: 320px;
+}
+
+.time-glitch p {
+  margin: 0;
 }
 
 .how-to-guide img {
@@ -473,7 +477,7 @@ p .button-instructions {
     margin: 0 0.5em;
   }
 
-  .how-to-guide {
+  .how-to-guide, .time-glitch {
     max-width: 480px;
   }
   
