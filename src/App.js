@@ -71,7 +71,7 @@ function App() {
                     border:
                         currentWeek === week
                             ? `4px solid black`
-                            : "1px solid black",
+                            : "4px solid transparent",
                 }}
             >
                 {week}
