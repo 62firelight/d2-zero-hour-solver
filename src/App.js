@@ -356,7 +356,7 @@ function App() {
                     rel="noreferrer"
                 >
                     360GameTV
-                </a>{" "}
+                </a>
                 ,{" "}
                 <a
                     href="https://www.youtube.com/@Esoterickk"
