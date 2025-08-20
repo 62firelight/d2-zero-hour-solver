@@ -358,7 +358,7 @@ function App() {
                 </p>
             </div>
             <hr />
-            <h2 id="about"></h2>
+            <div id="about"></div>
             <p>
                 Videos were created by{" "}
                 <a
