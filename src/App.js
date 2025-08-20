@@ -227,7 +227,17 @@ function App() {
     return (
         <div className="app">
             <h1>Zero Hour Solver</h1>
-            <h2>Fire Room Route</h2>
+            <nav>
+                <h2>Quick Links</h2>
+                <a href="#fire-room-route">Fire Room Route</a>
+                <a href="#vault-puzzle">Vault Puzzle</a>
+                <a href="#outbreak-refined-1-switches">Outbreak Refined I Switches</a>
+                <a href="#outbreak-refined-2-switches">Outbreak Refined II Switches</a>
+                <a href="#outbreak-refined-3-switches">Outbreak Refined III Switches</a>
+                <a href="#infinite-time-glitch">Infinite Time Glitch</a>
+                <a href="#about">About</a>
+            </nav>
+            <h2 id="fire-room-route">Fire Room Route</h2>
             <div className="filter-buttons">{threatFilters}</div>
             <h3>Showing routes for {currentThreat} Threat</h3>
             (click buttons above to change routes)
@@ -247,7 +257,7 @@ function App() {
             />
             {routeVideo}
             <hr />
-            <h2>Vault Puzzle</h2>
+            <h2 id="vault-puzzle">Vault Puzzle</h2>
             <div className="filter-buttons">{filterList}</div>
             <h3>Showing solution for {currentWeek} </h3>
             (click buttons above to change solutions)
@@ -279,7 +289,7 @@ function App() {
                 {getExamples(currentWeek)}
             </div>
             <hr />
-            <h2>Outbreak Refined I Switches</h2>
+            <h2 id="outbreak-refined-1-switches">Outbreak Refined I Switches</h2>
             <iframe
                 width="560"
                 height="315"
@@ -290,7 +300,7 @@ function App() {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
             ></iframe>
-            <h2>Outbreak Refined II Switches</h2>
+            <h2 id="outbreak-refined-2-switches">Outbreak Refined II Switches</h2>
             <iframe
                 width="560"
                 height="315"
@@ -301,7 +311,7 @@ function App() {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
             ></iframe>
-            <h2>Outbreak Refined III Switches</h2>
+            <h2 id="outbreak-refined-3-switches">Outbreak Refined III Switches</h2>
             <iframe
                 width="560"
                 height="315"
@@ -314,7 +324,7 @@ function App() {
             ></iframe>
             <hr />
             <div className="time-glitch">
-                <h2>Infinite Time Glitch</h2>
+                <h2 id="infinite-time-glitch">Infinite Time Glitch</h2>
                 <p>
                     The first minute and a half shows how to perform the glitch.
                     The rest of the video shows a full Zero Hour run using the
@@ -348,6 +358,7 @@ function App() {
                 </p>
             </div>
             <hr />
+            <h2 id="about"></h2>
             <p>
                 Videos were created by{" "}
                 <a

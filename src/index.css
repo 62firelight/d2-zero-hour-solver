@@ -19,6 +19,27 @@ code {
   text-align: center;
 }
 
+nav {
+  display: none;
+  position: fixed;
+  left: 4rem;
+  top: 4rem;
+  text-align: left;
+}
+
+nav h2 {
+  display: inline;
+}
+
+nav a {
+  display: flex;
+  flex-direction: column;
+}
+
+nav a:visited {
+  color: blue;
+}
+
 .filter-buttons {
   margin: 0 0 1em 0;
 }
@@ -272,7 +293,7 @@ ul.history {
 @media only screen and (min-width: 800px) {
   .terminal-buttons button:not(.progress button):hover:enabled {
     color: #938200;
-  }  
+  }
 }
 
 .progress {
@@ -284,7 +305,7 @@ ul.history {
   align-items: center;
 }
 
-.progress * { 
+.progress * {
   margin: 0 0 0.75em 0;
 }
 
@@ -481,17 +502,23 @@ p .button-instructions {
   .how-to-guide, .time-glitch {
     max-width: 480px;
   }
-  
+
   iframe {
     max-width: 480px;
   }
-  
+
   .how-to-guide img {
     max-width: 480px;
-  }  
+  }
 
   .route-map {
     max-width: 320px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  nav {
+    display: inline;
   }
 }
 
